@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZAREVOA | Plan Your World</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #0b2340;
+    }
+
+    header {
+      background: #071d36;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .slogan {
+      color: #31d5c8;
+      margin-top: 5px;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #eefcff, #ffffff);
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      max-width: 750px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      max-width: 650px;
+      color: #526579;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .boton {
+      display: inline-block;
+      background: #12bfb3;
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .boton:hover {
+      background: #0aa89e;
+    }
+
+    .opciones {
+      padding: 55px 20px;
+      text-align: center;
+    }
+
+    .opciones h2 {
+      font-size: 30px;
+      margin-bottom: 35px;
+    }
+
+    .tarjetas {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .tarjeta {
+      width: 320px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background: white;
+    }
+
+    .tarjeta h3 {
+      color: #0aa89e;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .tarjeta p {
+      color: #526579;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #071d36;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">ZAREVOA</div>
+    <div class="slogan">PLAN YOUR WORLD</div>
+  </header>
+
+  <section class="hero">
+    <h1>Tu viaje, hecho a tu medida</h1>
+
+    <p>
+      Transformamos el deseo de viajar en un viaje que realmente
+      tenga sentido para ti.
+    </p>
+
+    <a href="#planificar" class="boton">
+      Planificar mi viaje
+    </a>
+  </section>
+
+  <section class="opciones" id="planificar">
+
+    <h2>¿Cómo quieres viajar?</h2>
+
+    <div class="tarjetas">
+
+      <div class="tarjeta">
+        <h3>ZAREVOA Journey</h3>
+        <p>
+          Crea tu viaje paso a paso según tu presupuesto,
+          ritmo, intereses y estilo de viaje.
+        </p>
+      </div>
+
+      <div class="tarjeta">
+        <h3>ZAREVOA Personal</h3>
+        <p>
+          Recibe una planificación personalizada para construir
+          un viaje diseñado especialmente para ti.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 ZAREVOA · PLAN YOUR WORLD
+  </footer>
+
+</body>
+</html>
