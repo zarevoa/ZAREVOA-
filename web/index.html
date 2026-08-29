@@ -16,119 +16,135 @@
     body {
       font-family: Arial, sans-serif;
       background: #ffffff;
-      color: #0b2545;
+      color: #102a43;
     }
 
     header {
-      background: #071b33;
+      background: #071d35;
       color: white;
-      padding: 20px;
+      padding: 22px;
       text-align: center;
     }
 
     .logo {
       font-size: 34px;
       font-weight: bold;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
     }
 
-    .slogan {
-      color: #20c7c9;
+    .claim {
+      color: #35d0c5;
+      font-size: 14px;
       margin-top: 5px;
       letter-spacing: 2px;
     }
 
     .hero {
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 65px 20px;
       text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(
-        135deg,
-        #eefcff,
-        #ffffff
-      );
+      background: linear-gradient(135deg, #eefbfb, #ffffff);
     }
 
     .hero h1 {
-      font-size: 42px;
+      font-size: 36px;
+      color: #071d35;
       max-width: 750px;
-      margin-bottom: 20px;
+      margin: auto;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 18px;
+      color: #52667a;
       max-width: 650px;
-      color: #4b6478;
-      margin-bottom: 30px;
-      line-height: 1.5;
+      margin: 20px auto;
+      line-height: 1.6;
     }
 
     .button {
       display: inline-block;
-      background: #14b8b8;
+      background: #14b8ad;
       color: white;
-      padding: 16px 30px;
+      padding: 15px 28px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 18px;
+      margin-top: 10px;
     }
 
-    .services {
-      padding: 60px 20px;
+    .section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
       text-align: center;
     }
 
-    .services h2 {
-      margin-bottom: 35px;
-      font-size: 30px;
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #071d35;
+    }
+
+    .section-text {
+      max-width: 700px;
+      margin: auto;
+      color: #607286;
+      line-height: 1.6;
     }
 
     .cards {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
-      flex-wrap: wrap;
+      margin-top: 35px;
     }
 
     .card {
-      width: 300px;
-      padding: 30px;
+      background: white;
+      border: 1px solid #e5edf3;
       border-radius: 15px;
-      background: #f5f9fc;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      padding: 30px 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
     }
 
     .card h3 {
-      color: #0b8f95;
-      margin-bottom: 15px;
+      color: #14a89f;
+      margin-bottom: 12px;
     }
 
     .card p {
+      color: #607286;
       line-height: 1.5;
-      color: #536b7c;
     }
 
-    footer {
-      background: #071b33;
+    .travel-box {
+      background: #071d35;
       color: white;
-      text-align: center;
-      padding: 25px;
+      border-radius: 18px;
+      padding: 40px 25px;
       margin-top: 30px;
     }
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 32px;
-      }
+    .travel-box h2 {
+      color: white;
+    }
 
-      .hero p {
-        font-size: 18px;
-      }
+    .travel-box p {
+      color: #d9e5ee;
+      margin: 15px auto;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #061729;
+      color: #b8c7d4;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    footer strong {
+      color: white;
     }
   </style>
 </head>
@@ -137,41 +153,101 @@
 
   <header>
     <div class="logo">ZAREVOA</div>
-    <div class="slogan">PLAN YOUR WORLD</div>
+    <div class="claim">PLAN YOUR WORLD</div>
   </header>
 
   <section class="hero">
     <h1>Tu viaje, hecho a tu medida</h1>
 
     <p>
-      Transformamos el deseo de viajar en un viaje
-      que realmente tenga sentido para ti.
+      Transformamos el deseo de viajar en un viaje que realmente
+      tenga sentido para ti.
     </p>
 
-    <a class="button" href="#servicios">
-      Planificar mi viaje
+    <a class="button" href="#planificar">
+      Comenzar mi viaje
     </a>
   </section>
 
-  <section class="services" id="servicios">
+  <section class="section">
+    <h2>Una nueva forma de planificar</h2>
 
-    <h2>Descubre ZAREVOA</h2>
+    <p class="section-text">
+      ZAREVOA combina tus preferencias, presupuesto, ritmo e intereses
+      para ayudarte a construir una experiencia de viaje personalizada.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Tu viaje</h3>
+        <p>
+          Elige origen, destinos, fechas, duración y quiénes viajarán contigo.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Tu estilo</h3>
+        <p>
+          Define tu presupuesto, ritmo de viaje y alojamiento preferido.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Tus intereses</h3>
+        <p>
+          Naturaleza, ciudades, gastronomía, cultura y mucho más.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Tu experiencia</h3>
+        <p>
+          Recibe una propuesta pensada especialmente para tu forma de viajar.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="planificar">
+
+    <div class="travel-box">
+
+      <h2>¿Listo para descubrir tu próximo viaje?</h2>
+
+      <p>
+        Cuéntanos cómo quieres viajar y ZAREVOA te ayudará
+        a convertir tus ideas en un plan.
+      </p>
+
+      <a class="button" href="#">
+        Crear mi viaje
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>ZAREVOA Journey & Personal</h2>
 
     <div class="cards">
 
       <div class="card">
         <h3>ZAREVOA Journey</h3>
         <p>
-          Crea un viaje personalizado según tus fechas,
-          presupuesto, ritmo, intereses y preferencias.
+          Planifica tu viaje de forma guiada y personalizada,
+          paso a paso.
         </p>
       </div>
 
       <div class="card">
         <h3>ZAREVOA Personal</h3>
         <p>
-          Recibe planificación personalizada para construir
-          contigo una experiencia de viaje única.
+          Una experiencia de planificación personalizada
+          con atención 1 a 1.
         </p>
       </div>
 
@@ -180,8 +256,11 @@
   </section>
 
   <footer>
-    ZAREVOA · PLAN YOUR WORLD
+    <strong>ZAREVOA</strong><br><br>
+    PLAN YOUR WORLD
+    <br><br>
+    © 2026 ZAREVOA
   </footer>
 
 </body>
-</html>
+</
