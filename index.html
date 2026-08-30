@@ -8,127 +8,193 @@
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #0b2340;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f9fc;
+      color: #102a43;
     }
 
     header {
-      background: #071d36;
+      background: #062b49;
       color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .logo {
-      font-size: 34px;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
-
-    .slogan {
-      color: #31d5c8;
-      margin-top: 5px;
-      font-size: 14px;
-      letter-spacing: 2px;
-    }
-
-    .hero {
-      min-height: 75vh;
+      padding: 18px 20px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #eefcff, #ffffff);
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      max-width: 750px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 19px;
-      max-width: 650px;
-      color: #526579;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .boton {
-      display: inline-block;
-      background: #12bfb3;
-      color: white;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .boton:hover {
-      background: #0aa89e;
-    }
-
-    .opciones {
-      padding: 55px 20px;
-      text-align: center;
-    }
-
-    .opciones h2 {
-      font-size: 30px;
-      margin-bottom: 35px;
-    }
-
-    .tarjetas {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
       flex-wrap: wrap;
     }
 
-    .tarjeta {
-      width: 320px;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      background: white;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
 
-    .tarjeta h3 {
-      color: #0aa89e;
-      font-size: 24px;
+    .logo span {
+      color: #22c7c9;
+    }
+
+    .claim {
+      font-size: 13px;
+      letter-spacing: 2px;
+      opacity: 0.9;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #062b49, #087f8c);
+      color: white;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
       margin-bottom: 15px;
     }
 
-    .tarjeta p {
-      color: #526579;
-      line-height: 1.5;
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .hero button {
+      margin-top: 28px;
+      background: #22c7c9;
+      border: none;
+      color: #062b49;
+      padding: 15px 28px;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 35px auto;
+      padding: 0 18px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intro h2 {
+      color: #062b49;
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #087f8c;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      font-size: 16px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .intereses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .check {
+      background: #eef8f8;
+      padding: 12px;
+      border-radius: 9px;
+    }
+
+    .check input {
+      width: auto;
+      margin-right: 7px;
+    }
+
+    .submit {
+      width: 100%;
+      border: none;
+      background: #062b49;
+      color: white;
+      padding: 17px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 0 35px;
+    }
+
+    .submit:hover,
+    .hero button:hover {
+      opacity: 0.9;
     }
 
     footer {
-      background: #071d36;
+      background: #062b49;
       color: white;
       text-align: center;
-      padding: 25px;
+      padding: 25px 15px;
     }
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 32px;
+    footer strong {
+      color: #22c7c9;
+    }
+
+    @media (max-width: 650px) {
+      .grid,
+      .intereses {
+        grid-template-columns: 1fr;
       }
 
-      .hero p {
-        font-size: 17px;
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      header {
+        justify-content: center;
+        text-align: center;
+        gap: 7px;
       }
     }
   </style>
@@ -136,53 +202,200 @@
 
 <body>
 
-  <header>
-    <div class="logo">ZAREVOA</div>
-    <div class="slogan">PLAN YOUR WORLD</div>
-  </header>
+<header>
+  <div class="logo"><span>Z</span>AREVOA</div>
+  <div class="claim">PLAN YOUR WORLD</div>
+</header>
 
-  <section class="hero">
-    <h1>Tu viaje, hecho a tu medida</h1>
+<section class="hero">
+  <h1>Tu viaje empieza aquí</h1>
+  <p>
+    Cuéntanos cómo quieres viajar y ZAREVOA te ayudará a transformar
+    ese deseo en un viaje que realmente tenga sentido para ti.
+  </p>
 
-    <p>
-      Transformamos el deseo de viajar en un viaje que realmente
-      tenga sentido para ti.
-    </p>
+  <button onclick="document.getElementById('planificador').scrollIntoView({behavior:'smooth'})">
+    Crear mi viaje
+  </button>
+</section>
 
-    <a href="#planificar" class="boton">
-      Planificar mi viaje
-    </a>
-  </section>
+<main class="container" id="planificador">
 
-  <section class="opciones" id="planificar">
+  <div class="intro">
+    <h2>Diseña tu viaje</h2>
+    <p>Completa estos 4 bloques para comenzar.</p>
+  </div>
 
-    <h2>¿Cómo quieres viajar?</h2>
+  <form onsubmit="crearViaje(event)">
 
-    <div class="tarjetas">
+    <section class="card">
+      <h3>1. Tu viaje</h3>
 
-      <div class="tarjeta">
-        <h3>ZAREVOA Journey</h3>
-        <p>
-          Crea tu viaje paso a paso según tu presupuesto,
-          ritmo, intereses y estilo de viaje.
-        </p>
+      <label for="origen">¿Desde dónde viajas?</label>
+      <input id="origen" type="text" placeholder="Ej: Santiago, Chile" required>
+
+      <label for="destino">¿A dónde quieres viajar?</label>
+      <input id="destino" type="text" placeholder="Ej: Italia" required>
+
+      <div class="grid">
+        <div>
+          <label for="salida">Fecha de salida</label>
+          <input id="salida" type="date">
+        </div>
+
+        <div>
+          <label for="regreso">Fecha de regreso</label>
+          <input id="regreso" type="date">
+        </div>
       </div>
 
-      <div class="tarjeta">
-        <h3>ZAREVOA Personal</h3>
-        <p>
-          Recibe una planificación personalizada para construir
-          un viaje diseñado especialmente para ti.
-        </p>
+      <div class="grid">
+        <div>
+          <label for="viajeros">Viajeros</label>
+          <input id="viajeros" type="number" min="1" value="1">
+        </div>
+
+        <div>
+          <label for="duracion">Duración aproximada</label>
+          <input id="duracion" type="number" min="1" placeholder="Días">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>2. Tu estilo</h3>
+
+      <label for="presupuesto">Presupuesto aproximado</label>
+      <select id="presupuesto">
+        <option value="">Selecciona</option>
+        <option>Económico</option>
+        <option>Medio</option>
+        <option>Confort</option>
+        <option>Premium</option>
+      </select>
+
+      <label for="ritmo">Ritmo del viaje</label>
+      <select id="ritmo">
+        <option value="">Selecciona</option>
+        <option>Relajado</option>
+        <option>Equilibrado</option>
+        <option>Intenso</option>
+      </select>
+
+      <label for="tipo">Tipo de viaje</label>
+      <select id="tipo">
+        <option value="">Selecciona</option>
+        <option>Solo</option>
+        <option>Pareja</option>
+        <option>Familia</option>
+        <option>Amigos</option>
+        <option>Negocios</option>
+      </select>
+
+      <label for="alojamiento">Alojamiento preferido</label>
+      <select id="alojamiento">
+        <option value="">Selecciona</option>
+        <option>Hostal</option>
+        <option>Hotel</option>
+        <option>Apartamento</option>
+        <option>Resort</option>
+        <option>Sin preferencia</option>
+      </select>
+    </section>
+
+    <section class="card">
+      <h3>3. Tus intereses</h3>
+
+      <div class="intereses">
+        <label class="check">
+          <input type="checkbox"> Naturaleza
+        </label>
+
+        <label class="check">
+          <input type="checkbox"> Ciudades
+        </label>
+
+        <label class="check">
+          <input type="checkbox"> Gastronomía
+        </label>
+
+        <label class="check">
+          <input type="checkbox"> Cultura
+        </label>
+
+        <label class="check">
+          <input type="checkbox"> Playa
+        </label>
+
+        <label class="check">
+          <input type="checkbox"> Aventura
+        </label>
       </div>
 
-    </div>
+      <label for="mascota">¿Viajas con mascota?</label>
+      <select id="mascota">
+        <option>No</option>
+        <option>Sí</option>
+      </select>
+    </section>
 
-  </section>
+    <section class="card">
+      <h3>4. Extras</h3>
 
-  <footer>
-    © 2026 ZAREVOA · PLAN YOUR WORLD
-  </footer>
+      <label for="movilidad">Movilidad preferida</label>
+      <select id="movilidad">
+        <option value="">Selecciona</option>
+        <option>Transporte público</option>
+        <option>Auto de alquiler</option>
+        <option>Traslados privados</option>
+        <option>Combinado</option>
+      </select>
+
+      <label for="seguro">¿Quieres incluir seguro de viaje?</label>
+      <select id="seguro">
+        <option>Sí</option>
+        <option>No</option>
+        <option>Quiero comparar opciones</option>
+      </select>
+
+      <label for="flexibilidad">Flexibilidad de fechas</label>
+      <select id="flexibilidad">
+        <option>Fechas fijas</option>
+        <option>± 3 días</option>
+        <option>± 7 días</option>
+        <option>Soy flexible</option>
+      </select>
+
+      <label for="comentarios">¿Algo más que debamos saber?</label>
+      <textarea id="comentarios"
+        placeholder="Cuéntanos qué esperas de este viaje..."></textarea>
+    </section>
+
+    <button class="submit" type="submit">
+      Crear mi viaje ZAREVOA
+    </button>
+
+  </form>
+</main>
+
+<footer>
+  <strong>ZAREVOA</strong><br>
+  PLAN YOUR WORLD
+</footer>
+
+<script>
+  function crearViaje(event) {
+    event.preventDefault();
+
+    const destino = document.getElementById("destino").value;
+
+    alert(
+      "¡Excelente! Tu viaje a " +
+      destino +
+      " está listo para comenzar a planificarse con ZAREVOA."
+    );
+  }
+</script>
 
 </body>
 </html>
