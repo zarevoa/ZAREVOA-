@@ -1,0 +1,2503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZAREVOA | Plan Your World</title>
+
+  <style>
+    :root {
+      --azul: #071b35;
+      --azul2: #0d294b;
+      --turquesa: #19c7c1;
+      --turquesa2: #10aaa6;
+      --blanco: #ffffff;
+      --gris: #f4f7fa;
+      --gris2: #e4eaf0;
+      --texto: #24354a;
+      --sombra: 0 12px 35px rgba(7, 27, 53, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--gris);
+      color: var(--texto);
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--azul);
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-z {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: var(--turquesa);
+      color: var(--azul);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .marca-texto h1 {
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .marca-texto span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--turquesa);
+      margin-top: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    nav a:hover {
+      color: var(--turquesa);
+    }
+
+    .hero {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(7,27,53,0.98),
+          rgba(13,41,75,0.92)
+        );
+      color: white;
+      padding: 65px 20px 85px;
+      text-align: center;
+    }
+
+    .hero-contenido {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hero .mini {
+      color: var(--turquesa);
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-size: clamp(35px, 6vw, 60px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 span {
+      color: var(--turquesa);
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0.92;
+    }
+
+    .contenedor {
+      width: min(1100px, 92%);
+      margin: -45px auto 70px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: var(--sombra);
+    }
+
+    .titulo-panel {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .titulo-panel h3 {
+      color: var(--azul);
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .titulo-panel p {
+      color: #637083;
+    }
+
+    .bloque {
+      margin-bottom: 30px;
+      padding-bottom: 27px;
+      border-bottom: 1px solid var(--gris2);
+    }
+
+    .bloque:last-of-type {
+      border-bottom: none;
+    }
+
+    .bloque-titulo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .numero {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: var(--turquesa);
+      color: var(--azul);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .bloque-titulo h4 {
+      font-size: 20px;
+      color: var(--azul);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .campo.ancho {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--azul);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #cad4df;
+      border-radius: 11px;
+      padding: 13px 14px;
+      font-size: 15px;
+      color: var(--texto);
+      background: white;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--turquesa);
+      box-shadow: 0 0 0 3px rgba(25,199,193,0.12);
+    }
+
+    .ayuda {
+      font-size: 12px;
+      color: #788698;
+    }
+
+    .intereses {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .interes {
+      position: relative;
+    }
+
+    .interes input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .interes label {
+      min-height: 92px;
+      border: 1px solid #d7dee6;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      padding: 12px;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .interes label .icono {
+      font-size: 25px;
+    }
+
+    .interes input:checked + label {
+      background: rgba(25,199,193,0.12);
+      border-color: var(--turquesa);
+      color: var(--azul);
+      box-shadow: 0 5px 15px rgba(25,199,193,0.15);
+    }
+
+    .acciones {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .boton-principal {
+      border: none;
+      background: var(--turquesa);
+      color: var(--azul);
+      font-weight: 800;
+      font-size: 16px;
+      border-radius: 13px;
+      padding: 16px 28px;
+      cursor: pointer;
+      min-width: 240px;
+      transition: 0.2s;
+    }
+
+    .boton-principal:hover {
+      background: var(--turquesa2);
+      transform: translateY(-1px);
+    }
+
+    .mensaje-error {
+      display: none;
+      background: #fff1f1;
+      color: #a22929;
+      border: 1px solid #ffd2d2;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    /* RESULTADO */
+
+    #resultado {
+      display: none;
+    }
+
+    .resultado-cabecera {
+      background:
+        linear-gradient(
+          135deg,
+          var(--azul),
+          var(--azul2)
+        );
+      border-radius: 18px;
+      color: white;
+      padding: 30px;
+      margin-bottom: 25px;
+    }
+
+    .resultado-cabecera .pequeno {
+      color: var(--turquesa);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .resultado-cabecera h2 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .resultado-cabecera p {
+      opacity: 0.88;
+    }
+
+    .compatibilidad {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      padding: 9px 13px;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .compatibilidad strong {
+      color: var(--turquesa);
+    }
+
+    .compatibilidad-detalle {
+      margin-top: 10px;
+      max-width: 760px;
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .resumen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .tarjeta-resumen {
+      border: 1px solid var(--gris2);
+      background: #fff;
+      border-radius: 15px;
+      padding: 18px;
+    }
+
+    .tarjeta-resumen small {
+      display: block;
+      color: #738195;
+      margin-bottom: 5px;
+    }
+
+    .tarjeta-resumen strong {
+      color: var(--azul);
+      font-size: 16px;
+    }
+
+    .seccion-resultado {
+      border: 1px solid var(--gris2);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 18px;
+      background: white;
+    }
+
+    .seccion-resultado h3 {
+      color: var(--azul);
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .badge {
+      background: rgba(25,199,193,0.12);
+      color: var(--azul);
+      border: 1px solid rgba(25,199,193,0.4);
+      padding: 8px 12px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .itinerario {
+      display: grid;
+      gap: 14px;
+    }
+
+    .dia {
+      border-left: 4px solid var(--turquesa);
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .dia strong {
+      display: block;
+      color: var(--azul);
+      margin-bottom: 8px;
+    }
+
+    .dia-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: #5f6f82;
+    }
+
+    .dia-meta span {
+      background: white;
+      border: 1px solid #dfe8ee;
+      border-radius: 999px;
+      padding: 5px 9px;
+    }
+
+    .tramo-dia {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 10px;
+      padding: 7px 0;
+      border-top: 1px solid #e8eef2;
+      line-height: 1.45;
+    }
+
+    .tramo-dia:first-of-type {
+      border-top: 0;
+    }
+
+    .tramo-dia b {
+      color: #0b6670;
+      font-size: 13px;
+    }
+
+    .consejo-dia {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(25,199,193,0.09);
+      color: #31545b;
+      font-size: 13px;
+    }
+
+    .ruta-viaje {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ruta-parada {
+      background: #f8fafc;
+      border: 1px solid #dfe8ee;
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--azul);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .ruta-flecha {
+      color: var(--turquesa);
+      font-weight: 900;
+    }
+
+    .presupuesto-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .presupuesto-item {
+      background: #f8fafc;
+      border: 1px solid #e1e9ee;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .presupuesto-item small {
+      display: block;
+      color: #6b7a8c;
+      margin-bottom: 5px;
+    }
+
+    .presupuesto-item strong {
+      color: var(--azul);
+    }
+
+    .alertas-viaje {
+      display: grid;
+      gap: 9px;
+    }
+
+    .alerta-viaje {
+      background: #fffaf0;
+      border: 1px solid #f1dfb8;
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: #5e4b28;
+      line-height: 1.45;
+    }
+
+    .base-viaje {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0b6670;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 6px;
+    }
+
+    .nota-engine {
+      background: #f0fbfa;
+      border: 1px solid #c8efec;
+      border-radius: 15px;
+      padding: 18px;
+      color: #31545b;
+      margin-top: 20px;
+    }
+
+    .boton-secundario {
+      background: white;
+      border: 1px solid var(--azul);
+      color: var(--azul);
+      border-radius: 12px;
+      font-weight: 700;
+      padding: 13px 20px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: var(--azul);
+      color: white;
+      text-align: center;
+      padding: 32px 20px;
+      margin-top: 50px;
+    }
+
+    footer strong {
+      color: var(--turquesa);
+      letter-spacing: 1px;
+    }
+
+    footer p {
+      opacity: 0.7;
+      font-size: 13px;
+      margin-top: 7px;
+    }
+
+    @media (max-width: 820px) {
+      nav {
+        display: none;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .campo.ancho {
+        grid-column: auto;
+      }
+
+      .intereses {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .resumen-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .presupuesto-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 23px 18px;
+      }
+
+      .contenedor {
+        width: 94%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 14px 16px;
+      }
+
+      .marca-texto h1 {
+        font-size: 20px;
+      }
+
+      .hero {
+        padding: 48px 18px 72px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .intereses {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .resultado-cabecera h2 {
+        font-size: 27px;
+      }
+    }
+  
+
+    .detalle-practico {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 8px;
+    }
+    .detalle-practico div {
+      background: #f7fbfc;
+      border: 1px solid #d9eeee;
+      border-radius: 10px;
+      padding: 9px 10px;
+      font-size: 12px;
+      color: #465d67;
+    }
+    .detalle-practico b {
+      display:block;
+      color:#126f74;
+      margin-bottom:3px;
+    }
+    @media (max-width: 650px) {
+      .detalle-practico { grid-template-columns: 1fr; }
+    }
+
+
+
+    /* ===== ZAREVOA DIFFERENTIATION V1.2 ===== */
+    .z-intelligence { margin: 12px 0 4px; padding: 12px; border: 1px solid #d9eeee; border-radius: 14px; background: linear-gradient(135deg,#f7ffff,#f5f9fc); }
+    .z-intelligence-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px; }
+    .z-score { display:flex; align-items:baseline; gap:5px; color:var(--azul); font-weight:800; }
+    .z-score strong { font-size:24px; color:#0b7775; }
+    .z-plan-chip { font-size:10px; font-weight:900; letter-spacing:.8px; color:#0b7775; background:#dff8f6; border-radius:999px; padding:5px 8px; }
+    .z-signals { display:flex; flex-wrap:wrap; gap:6px; }
+    .z-signal { font-size:11px; border-radius:999px; padding:5px 8px; border:1px solid #dce8eb; background:white; color:#48606b; }
+    .z-signal.ok::before { content:'✓ '; color:#07836f; font-weight:900; }
+    .z-signal.watch::before { content:'! '; color:#b47400; font-weight:900; }
+    .z-detected { margin-top:10px; padding:10px 12px; border-radius:10px; background:#fffaf0; border:1px solid #f1dfb8; color:#5e4b28; font-size:12px; line-height:1.45; }
+    .z-detected b { color:#7a5917; }
+    .journey-upgrade { margin-top:22px; padding:18px; border-radius:16px; background:linear-gradient(135deg,#071b35,#0d294b); color:white; box-shadow:var(--sombra); }
+    .journey-upgrade .eyebrow { color:var(--turquesa); font-size:11px; font-weight:900; letter-spacing:1.2px; }
+    .journey-upgrade h3 { margin:5px 0 7px; font-size:19px; }
+    .journey-upgrade p { color:#d9e6ef; font-size:13px; line-height:1.5; }
+    .journey-features { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px; }
+    .journey-feature { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.13); border-radius:10px; padding:9px 10px; font-size:12px; }
+    .optimize-btn { margin-top:14px; width:100%; border:0; border-radius:11px; padding:12px 14px; font-weight:800; cursor:pointer; background:var(--turquesa); color:var(--azul); }
+    .optimize-msg { display:none; margin-top:10px; font-size:12px; color:#dff8f6; }
+    @media (max-width:650px){ .journey-features{grid-template-columns:1fr;} .z-intelligence-top{align-items:flex-start;} }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="marca">
+    <div class="logo-z">Z</div>
+
+    <div class="marca-texto">
+      <h1>ZAREVOA</h1>
+      <span>PLAN YOUR WORLD</span>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#crear">Crear mi viaje</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#footer">ZAREVOA</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <div class="hero-contenido">
+
+    <div class="mini">
+      TU VIAJE · A TU MANERA
+    </div>
+
+    <h2>
+      Convierte tus ideas en un
+      <span>viaje con sentido.</span>
+    </h2>
+
+    <p>
+      Cuéntanos cómo quieres viajar y ZAREVOA organizará
+      una propuesta personalizada según tus fechas,
+      presupuesto, ritmo e intereses.
+    </p>
+
+  </div>
+</section>
+
+
+<main class="contenedor" id="crear">
+
+  <!-- FORMULARIO -->
+
+  <section class="panel" id="formulario">
+
+    <div class="titulo-panel">
+      <h3>Crear mi viaje</h3>
+      <p>
+        Solo necesitamos algunos datos para comenzar a construir
+        tu experiencia ZAREVOA.
+      </p>
+    </div>
+
+    <div id="mensajeError" class="mensaje-error"></div>
+
+
+    <!-- BLOQUE 1 -->
+
+    <div class="bloque">
+
+      <div class="bloque-titulo">
+        <div class="numero">1</div>
+        <h4>Tu viaje</h4>
+      </div>
+
+      <div class="grid">
+
+        <div class="campo">
+          <label for="origen">¿Desde dónde viajas?</label>
+          <input
+            type="text"
+            id="origen"
+            placeholder="Ej: Santiago, Chile"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="campo">
+          <label for="destino">¿A dónde quieres viajar? *</label>
+          <input
+            type="text"
+            id="destino"
+            placeholder="Ej: Italia"
+            autocomplete="off"
+          >
+          <span class="ayuda">
+            Puedes escribir un país, ciudad o región.
+          </span>
+        </div>
+
+        <div class="campo">
+          <label for="fechaInicio">Fecha de inicio</label>
+          <input type="date" id="fechaInicio">
+        </div>
+
+        <div class="campo">
+          <label for="fechaFin">Fecha de regreso</label>
+          <input type="date" id="fechaFin">
+        </div>
+
+        <div class="campo">
+          <label for="viajeros">Número de viajeros</label>
+          <input
+            type="number"
+            id="viajeros"
+            value="2"
+            min="1"
+            max="20"
+          >
+        </div>
+
+        <div class="campo">
+          <label for="edades">Edades de los viajeros</label>
+          <input
+            type="text"
+            id="edades"
+            placeholder="Ej: 54, 44"
+          >
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- BLOQUE 2 -->
+
+    <div class="bloque">
+
+      <div class="bloque-titulo">
+        <div class="numero">2</div>
+        <h4>Tu estilo</h4>
+      </div>
+
+      <div class="grid">
+
+        <div class="campo">
+          <label for="presupuesto">Presupuesto aproximado</label>
+
+          <select id="presupuesto">
+            <option value="">Seleccionar</option>
+            <option value="Económico">Económico</option>
+            <option value="Medio">Medio</option>
+            <option value="Confort">Confort</option>
+            <option value="Premium">Premium</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="ritmo">Ritmo del viaje</label>
+
+          <select id="ritmo">
+            <option value="Equilibrado">Equilibrado</option>
+            <option value="Relajado">Relajado</option>
+            <option value="Intenso">Intenso</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Tipo de viaje</label>
+
+          <select id="tipo">
+            <option value="">Seleccionar</option>
+            <option value="Pareja">Pareja</option>
+            <option value="Familia">Familia</option>
+            <option value="Amigos">Amigos</option>
+            <option value="Solo">Solo</option>
+            <option value="Luna de miel">Luna de miel</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Negocios + ocio">Negocios + ocio</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="alojamiento">Alojamiento preferido</label>
+
+          <select id="alojamiento">
+            <option value="">Sin preferencia</option>
+            <option value="Hostal">Hostal</option>
+            <option value="Hotel 3 estrellas">Hotel 3 estrellas</option>
+            <option value="Hotel 4 estrellas">Hotel 4 estrellas</option>
+            <option value="Hotel 5 estrellas">Hotel 5 estrellas</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Mixto">Mixto</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- BLOQUE 3 -->
+
+    <div class="bloque">
+
+      <div class="bloque-titulo">
+        <div class="numero">3</div>
+        <h4>Tus intereses</h4>
+      </div>
+
+      <div class="intereses">
+
+        <div class="interes">
+          <input
+            type="checkbox"
+            id="interesNaturaleza"
+            name="intereses"
+            value="Naturaleza"
+          >
+          <label for="interesNaturaleza">
+            <span class="icono">🌿</span>
+            Naturaleza
+          </label>
+        </div>
+
+        <div class="interes">
+          <input
+            type="checkbox"
+            id="interesCiudad"
+            name="intereses"
+            value="Ciudad"
+          >
+          <label for="interesCiudad">
+            <span class="icono">🏙️</span>
+            Ciudad
+          </label>
+        </div>
+
+        <div class="interes">
+          <input
+            type="checkbox"
+            id="interesGastronomia"
+            name="intereses"
+            value="Gastronomía"
+          >
+          <label for="interesGastronomia">
+            <span class="icono">🍷</span>
+            Gastronomía
+          </label>
+        </div>
+
+        <div class="interes">
+          <input
+            type="checkbox"
+            id="interesCultura"
+            name="intereses"
+            value="Cultura"
+          >
+          <label for="interesCultura">
+            <span class="icono">🏛️</span>
+            Cultura
+          </label>
+        </div>
+
+      </div>
+
+      <div class="grid" style="margin-top:20px;">
+
+        <div class="campo">
+          <label for="mascota">¿Viajas con mascota?</label>
+
+          <select id="mascota">
+            <option value="No">No</option>
+            <option value="Sí">Sí</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BLOQUE 4 -->
+
+    <div class="bloque">
+
+      <div class="bloque-titulo">
+        <div class="numero">4</div>
+        <h4>Extras</h4>
+      </div>
+
+      <div class="grid">
+
+        <div class="campo">
+          <label for="movilidad">Movilidad</label>
+
+          <select id="movilidad">
+            <option value="">Sin preferencia</option>
+            <option value="Transporte público">
+              Transporte público
+            </option>
+            <option value="Auto de alquiler">
+              Auto de alquiler
+            </option>
+            <option value="Traslados privados">
+              Traslados privados
+            </option>
+            <option value="Mixto">
+              Mixto
+            </option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="seguro">Seguro de viaje</label>
+
+          <select id="seguro">
+            <option value="Quiero opciones">
+              Quiero opciones
+            </option>
+            <option value="Ya tengo">
+              Ya tengo
+            </option>
+            <option value="No">
+              No por ahora
+            </option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="flexibilidad">Flexibilidad de fechas</label>
+
+          <select id="flexibilidad">
+            <option value="Fechas fijas">
+              Fechas fijas
+            </option>
+            <option value="Puedo mover algunos días">
+              Puedo mover algunos días
+            </option>
+            <option value="Muy flexible">
+              Muy flexible
+            </option>
+          </select>
+        </div>
+
+        <div class="campo ancho">
+          <label for="comentarios">
+            ¿Hay algo más que debamos saber?
+          </label>
+
+          <textarea
+            id="comentarios"
+            placeholder="Ej: quiero evitar vuelos muy temprano, necesito actividades para niños, celebramos aniversario, prefiero caminar poco..."
+          ></textarea>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="acciones">
+      <button
+        type="button"
+        class="boton-principal"
+        onclick="crearViaje()"
+      >
+        Crear mi viaje ZAREVOA
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- RESULTADO -->
+
+  <section class="panel" id="resultado">
+
+    <div class="resultado-cabecera">
+
+      <div class="pequeno">
+        TU PROPUESTA INICIAL ZAREVOA
+      </div>
+
+      <h2 id="tituloResultado">
+        Tu viaje
+      </h2>
+
+      <p id="subtituloResultado">
+        Hemos preparado una primera propuesta basada en tus preferencias.
+      </p>
+
+      <div class="compatibilidad">
+        Compatibilidad inicial:
+        <strong id="compatibilidadResultado">--%</strong>
+      </div>
+
+      <p id="compatibilidadDetalle" class="compatibilidad-detalle">
+        La compatibilidad se calculará según el destino y tus preferencias.
+      </p>
+
+    </div>
+
+
+    <div class="resumen-grid">
+
+      <div class="tarjeta-resumen">
+        <small>Duración</small>
+        <strong id="duracionResultado">
+          Por definir
+        </strong>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <small>Viajeros</small>
+        <strong id="viajerosResultado">
+          2 personas
+        </strong>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <small>Estilo</small>
+        <strong id="estiloResultado">
+          Equilibrado
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="seccion-resultado">
+
+      <h3>Tu perfil de viaje</h3>
+
+      <div
+        class="badges"
+        id="badgesResultado"
+      ></div>
+
+    </div>
+
+
+    <div class="seccion-resultado">
+
+      <h3>Tus intereses</h3>
+
+      <p id="interesesResultado">
+        ZAREVOA tendrá en cuenta tus preferencias para construir el itinerario.
+      </p>
+
+    </div>
+
+
+    <div class="seccion-resultado">
+      <h3>Ruta propuesta</h3>
+      <div class="ruta-viaje" id="rutaResultado"></div>
+    </div>
+
+    <div class="seccion-resultado">
+      <h3>Presupuesto orientativo</h3>
+      <div class="presupuesto-grid" id="presupuestoResultado"></div>
+      <p style="font-size:12px;color:#718096;margin-top:10px;">Estimación V1 de referencia. No corresponde a cotizaciones ni precios en tiempo real.</p>
+    </div>
+
+    <div class="seccion-resultado">
+      <h3>Alertas y decisiones del viaje</h3>
+      <div class="alertas-viaje" id="alertasResultado"></div>
+    </div>
+
+    <div class="seccion-resultado">
+
+      <h3>Itinerario completo día a día</h3>
+
+      <div
+        class="itinerario"
+        id="itinerarioResultado"
+      ></div>
+
+    </div>
+
+
+
+
+    <div class="journey-upgrade">
+      <div class="eyebrow">ZAREVOA JOURNEY · VISTA PREVIA</div>
+      <h3>Tu viaje puede seguir adaptándose</h3>
+      <p>La versión gratuita te muestra una propuesta útil. Journey añadirá control dinámico para recalcular el viaje sin comenzar nuevamente.</p>
+      <div class="journey-features">
+        <div class="journey-feature">↻ Reoptimizar al cambiar ritmo</div>
+        <div class="journey-feature">◈ Ajustar presupuesto y prioridades</div>
+        <div class="journey-feature">⇄ Sustituir una actividad</div>
+        <div class="journey-feature">⚑ Recalcular bases y traslados</div>
+      </div>
+      <button type="button" class="optimize-btn" onclick="mostrarOptimizacionDemo()">Optimizar mi viaje</button>
+      <div class="optimize-msg" id="optimizeMsg"></div>
+    </div>
+
+    <div class="nota-engine">
+
+      <strong>ZAREVOA Engine V1.2</strong><br>
+
+      Esta propuesta distribuye la duración del viaje en bases, exploración, traslados y descansos,
+      y añade orientación práctica de movilidad, reservas y márgenes operativos. Las horas, costos y tiempos
+      siguen siendo orientativos hasta conectar fuentes de datos en tiempo real.
+
+    </div>
+
+
+    <div
+      class="acciones"
+      style="margin-top:25px;"
+    >
+
+      <button
+        type="button"
+        class="boton-secundario"
+        onclick="volverFormulario()"
+      >
+        ← Modificar mi viaje
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<section
+  id="como-funciona"
+  style="
+    max-width:1000px;
+    margin:0 auto 70px;
+    padding:0 20px;
+    text-align:center;
+  "
+>
+
+  <h2
+    style="
+      color:#071b35;
+      margin-bottom:15px;
+    "
+  >
+    Cómo funciona ZAREVOA
+  </h2>
+
+  <p
+    style="
+      max-width:700px;
+      margin:auto;
+      color:#647386;
+    "
+  >
+    ZAREVOA combina tus preferencias con reglas de viaje,
+    información real y tecnología para transformar el deseo
+    de viajar en un viaje que realmente tenga sentido para ti.
+  </p>
+
+</section>
+
+
+<footer id="footer">
+
+  <strong>ZAREVOA · PLAN YOUR WORLD</strong>
+
+  <p>
+    Tu viaje, hecho a tu medida.
+  </p>
+
+</footer>
+
+
+<script>
+
+  function obtenerValor(id) {
+    const elemento = document.getElementById(id);
+
+    if (!elemento) {
+      return "";
+    }
+
+    return elemento.value.trim();
+  }
+
+
+  function calcularDuracion(fechaInicio, fechaFin) {
+
+    if (!fechaInicio || !fechaFin) {
+      return null;
+    }
+
+    const inicio = new Date(
+      fechaInicio + "T00:00:00"
+    );
+
+    const fin = new Date(
+      fechaFin + "T00:00:00"
+    );
+
+    const diferencia =
+      fin.getTime() - inicio.getTime();
+
+    if (diferencia < 0) {
+      return -1;
+    }
+
+    const dias =
+      Math.floor(
+        diferencia / (1000 * 60 * 60 * 24)
+      ) + 1;
+
+    return dias;
+  }
+
+
+  const planesViajeV1 = [
+    {
+      claves: ["bali", "indonesia"],
+      bases: [
+        { nombre: "Ubud", min: 5, actividades: [
+          { titulo: "Ubud esencial", manana: "Recorrido a pie por Ubud Palace y Saraswati Temple; continuar al mercado tradicional antes de las horas de mayor calor", tarde: "Almuerzo en el centro y visita a Monkey Forest; terminar con tiempo libre para cafés, artesanía o masaje balinés", noche: "Cena en el centro de Ubud y paseo tranquilo por Jalan Goutama" },
+          { titulo: "Arrozales y vida rural", manana: "Salida hacia Tegalalang Rice Terrace temprano para caminar con menos calor y menos visitantes", tarde: "Almuerzo con vista a los arrozales y visita a Tirta Empul, dejando margen para el tráfico de regreso", noche: "Cena ligera cerca del alojamiento y descanso" },
+          { titulo: "Cascadas del centro de Bali", manana: "Salida hacia Tegenungan o Tibumana; visita de la cascada y tiempo para baño si las condiciones son seguras", tarde: "Almuerzo en ruta y parada en un pueblo artesanal o plantación local antes de regresar a Ubud", noche: "Cena libre y opción de espectáculo cultural balinés" },
+          { titulo: "Templos y cultura balinesa", manana: "Visita a Goa Gajah y recorrido cultural por los alrededores de Ubud", tarde: "Almuerzo tranquilo y visita a Gunung Kawi o un templo de la zona, evitando encadenar demasiadas paradas", noche: "Cena en Ubud y tiempo libre" },
+          { titulo: "Recuperación en Ubud", manana: "Desayuno sin prisa, piscina o spa; no se programa una salida temprana", tarde: "Café, compras pequeñas y paseo por Campuhan Ridge Walk al final de la tarde", noche: "Cena temprana y preparación del siguiente tramo" }
+        ]},
+        { nombre: "Munduk", min: 3, actividades: [
+          { titulo: "Cascadas de Munduk", manana: "Ruta de senderismo entre Munduk, Melanting y cascadas cercanas, ajustando la distancia al ritmo elegido", tarde: "Almuerzo local y regreso con tiempo de descanso en el alojamiento", noche: "Cena tranquila en Munduk; noche de baja intensidad" },
+          { titulo: "Lagos del norte", manana: "Salida hacia los lagos Buyan y Tamblingan con parada en miradores", tarde: "Visita al templo Ulun Danu Beratan y regreso sin añadir desvíos largos", noche: "Cena y descanso" },
+          { titulo: "Pueblos y paisaje", manana: "Recorrido corto por pueblos y plantaciones de la zona de Munduk", tarde: "Tarde libre para descansar, leer, piscina o caminata corta", noche: "Cena local y preparación del traslado" }
+        ]},
+        { nombre: "Nusa Penida", min: 3, actividades: [
+          { titulo: "Costa oeste", manana: "Salida temprana hacia Kelingking Beach y miradores de la costa oeste", tarde: "Continuación hacia Broken Beach y Angel's Billabong, con pausas porque las carreteras son lentas", noche: "Regreso al alojamiento y cena sin desplazamientos adicionales" },
+          { titulo: "Costa este", manana: "Diamond Beach y Atuh Beach temprano", tarde: "Miradores del este y regreso progresivo al alojamiento", noche: "Cena tranquila y descanso" },
+          { titulo: "Día flexible por mar y clima", manana: "Bloque reservado para snorkel o actividad marina solo si las condiciones son adecuadas", tarde: "Playa próxima al alojamiento o descanso si el mar obliga a cancelar", noche: "Cena y preparación del ferry del día siguiente" }
+        ]},
+        { nombre: "Sanur", min: 4, actividades: [
+          { titulo: "Sanur y adaptación", manana: "Paseo por el frente costero de Sanur y desayuno tardío", tarde: "Playa, piscina y reconocimiento de restaurantes y servicios cercanos", noche: "Cena frente al mar o en Jalan Danau Tamblingan" },
+          { titulo: "Costa este de Bali", manana: "Excursión hacia una playa o punto cultural de la costa este", tarde: "Almuerzo y regreso temprano a Sanur para evitar cargar demasiado la jornada", noche: "Cena libre" },
+          { titulo: "Día de playa", manana: "Mañana libre en la playa o piscina", tarde: "Actividad acuática suave, masaje o café", noche: "Cena y paseo por Sanur" },
+          { titulo: "Mercados y gastronomía", manana: "Mañana flexible para compras o descanso", tarde: "Exploración gastronómica y mercados locales", noche: "Cena de cierre de etapa" }
+        ]},
+        { nombre: "Uluwatu", min: 4, actividades: [
+          { titulo: "Uluwatu y atardecer", manana: "Traslado corto a una playa del sur y mañana relajada", tarde: "Visita al templo de Uluwatu con margen suficiente antes del atardecer", noche: "Cena en la península de Bukit" },
+          { titulo: "Playas del sur", manana: "Padang Padang, Bingin o playa similar según acceso y oleaje", tarde: "Almuerzo y segunda parada breve en la costa, evitando cambiar de playa continuamente", noche: "Cena y descanso" },
+          { titulo: "Descanso costero", manana: "Desayuno tardío y piscina", tarde: "Spa, café o playa cercana", noche: "Cena con vista al mar si la ubicación lo permite" },
+          { titulo: "Cierre en el sur", manana: "Mañana libre para repetir la playa favorita", tarde: "Compras pequeñas, descanso y organización de equipaje", noche: "Cena final sin trayectos largos" }
+        ]},
+        { nombre: "Seminyak / Canggu", min: 4, actividades: [
+          { titulo: "Cafés y playa", manana: "Desayuno en café local y recorrido por tiendas y calles principales", tarde: "Playa y tiempo libre", noche: "Atardecer y cena en la zona" },
+          { titulo: "Gastronomía y compras", manana: "Mercados, boutiques o cafés según intereses", tarde: "Almuerzo largo y descanso", noche: "Experiencia gastronómica de cierre" },
+          { titulo: "Día libre", manana: "Bloque completamente libre sin excursión programada", tarde: "Spa, piscina o playa", noche: "Cena a elección" },
+          { titulo: "Último atardecer", manana: "Mañana suave y organización del equipaje", tarde: "Playa y último paseo", noche: "Atardecer y cena final" }
+        ]}
+      ],
+      alertas: ["Los traslados por carretera pueden tomar más tiempo de lo esperado por tráfico.", "Conviene dejar margen entre Bali y Nusa Penida por condiciones marítimas.", "Los últimos días quedan cerca de servicios y conexiones para facilitar el regreso."]
+    },
+    {
+      claves: ["italia", "roma", "florencia", "venecia"],
+      bases: [
+        { nombre: "Roma", min: 5, actividades: [
+          { titulo: "Roma histórica", manana: "Coliseo, Foro Romano y Palatino con entrada reservada; comenzar temprano para evitar las horas de mayor afluencia", tarde: "Almuerzo en Monti y paseo hacia Piazza Venezia, Fontana di Trevi y Plaza de España", noche: "Cena en Monti o centro histórico y paseo corto iluminado" },
+          { titulo: "Vaticano", manana: "Museos Vaticanos y Capilla Sixtina con reserva previa", tarde: "Basílica de San Pedro y paseo hacia Castel Sant'Angelo y el Tíber", noche: "Cena en Prati o regreso tranquilo al alojamiento" },
+          { titulo: "Centro barroco y Trastevere", manana: "Panteón, Piazza Navona y Campo de' Fiori a pie", tarde: "Almuerzo y cruce hacia Trastevere; paseo por Santa Maria in Trastevere y calles del barrio", noche: "Cena en Trastevere, sin añadir otra visita principal" },
+          { titulo: "Villa Borghese y barrios", manana: "Galería Borghese si hay disponibilidad o paseo por Villa Borghese", tarde: "Piazza del Popolo y Via del Corso con tiempo para compras o café", noche: "Cena libre" },
+          { titulo: "Roma flexible", manana: "Mañana para repetir un lugar favorito o visitar una iglesia, mercado o museo pendiente", tarde: "Almuerzo largo y descanso; mantener la segunda mitad del día sin reservas rígidas", noche: "Cena de despedida de Roma" }
+        ]},
+        { nombre: "Florencia", min: 4, actividades: [
+          { titulo: "Duomo y centro", manana: "Piazza del Duomo, Catedral de Santa Maria del Fiore y recorrido por el centro histórico", tarde: "Piazza della Signoria, Palazzo Vecchio exterior y Ponte Vecchio", noche: "Cena en el centro u Oltrarno" },
+          { titulo: "Arte renacentista", manana: "Galería Uffizi con reserva previa", tarde: "Almuerzo y recorrido por Santa Croce y calles del centro", noche: "Cena tranquila y paseo junto al Arno" },
+          { titulo: "Oltrarno", manana: "Palazzo Pitti o Jardines de Boboli según interés", tarde: "Talleres, cafés y plazas de Oltrarno", noche: "Subida a Piazzale Michelangelo para el atardecer y cena posterior" },
+          { titulo: "Florencia flexible", manana: "Mercado Central y tiempo libre para compras o una visita pendiente", tarde: "Almuerzo y pausa; no se programa un segundo museo importante", noche: "Cena de cierre en Florencia" }
+        ]},
+        { nombre: "Toscana", min: 4, actividades: [
+          { titulo: "Siena", manana: "Salida hacia Siena y recorrido por Piazza del Campo y Duomo", tarde: "Almuerzo y paseo por calles históricas antes de regresar a la base", noche: "Cena tranquila" },
+          { titulo: "Pueblos toscanos", manana: "Ruta por uno o dos pueblos como San Gimignano o Monteriggioni, evitando sumar demasiadas paradas", tarde: "Almuerzo rural y miradores de la campiña", noche: "Regreso y descanso" },
+          { titulo: "Gastronomía toscana", manana: "Visita a una zona vitivinícola o productor local con reserva", tarde: "Almuerzo largo y regreso sin actividad exigente", noche: "Cena ligera" },
+          { titulo: "Día flexible en la campiña", manana: "Desayuno tardío y paseo corto por la base", tarde: "Tiempo libre, piscina o visita cercana", noche: "Preparación del siguiente traslado" }
+        ]},
+        { nombre: "Bolonia", min: 3, actividades: [
+          { titulo: "Centro histórico", manana: "Piazza Maggiore, Basílica de San Petronio y calles porticadas", tarde: "Quadrilatero y mercados gastronómicos; paseo hacia las Dos Torres", noche: "Cena centrada en cocina boloñesa" },
+          { titulo: "Bolonia gastronómica", manana: "Mercado o experiencia gastronómica local", tarde: "Paseo por Santo Stefano y barrios centrales", noche: "Cena y descanso" },
+          { titulo: "Excursión corta", manana: "Excursión de medio día a una ciudad cercana bien conectada o visita cultural pendiente", tarde: "Regreso a Bolonia y tiempo libre", noche: "Cena temprana y preparación del traslado" }
+        ]},
+        { nombre: "Venecia", min: 4, actividades: [
+          { titulo: "San Marcos", manana: "Piazza San Marco, Basílica de San Marcos y exterior del Palacio Ducal; reservar temprano cuando corresponda", tarde: "Paseo por callejones y puentes hacia Rialto", noche: "Cena fuera del eje más turístico y paseo nocturno" },
+          { titulo: "Rialto y Cannaregio", manana: "Mercado de Rialto y recorrido junto al Gran Canal", tarde: "Cannaregio y Ghetto Ebraico con pausas en bacari", noche: "Cena tipo cicchetti o restaurante local" },
+          { titulo: "Islas de la laguna", manana: "Vaporetto hacia Murano y continuación a Burano si el ritmo lo permite", tarde: "Regreso a Venecia sin programar museo adicional", noche: "Cena tranquila" },
+          { titulo: "Venecia sin prisa", manana: "Recorrido libre por Dorsoduro o zona pendiente", tarde: "Último paseo, café y compras pequeñas", noche: "Cena de despedida entre canales" }
+        ]}
+      ],
+      alertas: ["Conviene reservar con anticipación Coliseo, Museos Vaticanos, Uffizi y otros atractivos de alta demanda.", "Los cambios de base se plantean en días separados para no sobrecargar el itinerario.", "En ciudades históricas conviene priorizar alojamiento bien conectado antes que depender del automóvil."]
+    },
+    {
+      claves: ["peru", "perú", "cusco", "cuzco"],
+      bases: [
+        { nombre: "Lima", min: 3, actividades: [
+          { titulo: "Miraflores y Barranco", manana: "Paseo por Malecón de Miraflores, Parque del Amor y costa", tarde: "Almuerzo y recorrido por Barranco, Puente de los Suspiros y galerías", noche: "Cena en Miraflores o Barranco" },
+          { titulo: "Centro histórico", manana: "Plaza Mayor, Catedral exterior y calles del centro histórico", tarde: "Almuerzo y visita cultural o museo según interés", noche: "Regreso temprano a la zona de alojamiento" },
+          { titulo: "Lima gastronómica", manana: "Mercado o barrio gastronómico y mañana flexible", tarde: "Almuerzo principal del día con tiempo suficiente; paseo corto posterior", noche: "Cena ligera y preparación del vuelo o traslado" }
+        ]},
+        { nombre: "Cusco", min: 4, actividades: [
+          { titulo: "Aclimatación", manana: "Llegada y descanso; evitar esfuerzo físico fuerte durante las primeras horas", tarde: "Paseo suave por Plaza de Armas y calles cercanas", noche: "Cena ligera e hidratación" },
+          { titulo: "Cusco histórico", manana: "Qorikancha y centro histórico a ritmo moderado", tarde: "San Blas, talleres y miradores cercanos sin caminata prolongada", noche: "Cena y descanso" },
+          { titulo: "Sacsayhuamán", manana: "Visita a Sacsayhuamán y sitios cercanos con transporte organizado", tarde: "Regreso a Cusco, almuerzo y tarde libre", noche: "Cena tranquila" },
+          { titulo: "Día flexible en altura", manana: "Mañana libre para recuperación o visita pendiente", tarde: "Mercado, café o museo según energía", noche: "Preparación del Valle Sagrado" }
+        ]},
+        { nombre: "Valle Sagrado", min: 3, actividades: [
+          { titulo: "Pisac", manana: "Salida hacia Pisac y recorrido por el sitio arqueológico", tarde: "Almuerzo en el valle y visita al pueblo o mercado", noche: "Cena en la base del Valle Sagrado" },
+          { titulo: "Ollantaytambo", manana: "Visita al complejo arqueológico de Ollantaytambo temprano", tarde: "Paseo por el pueblo y tiempo libre; evitar añadir una segunda excursión larga", noche: "Cena y descanso" },
+          { titulo: "Valle tranquilo", manana: "Recorrido corto por un punto del valle pendiente", tarde: "Descanso y preparación del equipaje para Machu Picchu", noche: "Cena temprana" }
+        ]},
+        { nombre: "Machu Picchu", min: 2, actividades: [
+          { titulo: "Llegada a Machu Picchu Pueblo", manana: "Traslado en tren desde el Valle Sagrado según horario reservado", tarde: "Check-in, paseo por Machu Picchu Pueblo y confirmación de entradas y transporte del día siguiente", noche: "Cena temprana y descanso" },
+          { titulo: "Machu Picchu", manana: "Ascenso y visita al circuito reservado de Machu Picchu en el horario asignado", tarde: "Regreso a Machu Picchu Pueblo y conexión ferroviaria según planificación", noche: "Llegada a la siguiente base o descanso" }
+        ]},
+        { nombre: "Arequipa", min: 4, actividades: [
+          { titulo: "Centro de Arequipa", manana: "Plaza de Armas, Catedral exterior y calles del centro", tarde: "Monasterio de Santa Catalina con tiempo suficiente", noche: "Cena en el centro histórico" },
+          { titulo: "Miradores", manana: "Ruta por Yanahuara y miradores con vistas a los volcanes", tarde: "Almuerzo y tiempo libre", noche: "Cena tranquila" },
+          { titulo: "Gastronomía arequipeña", manana: "Mercado o paseo local", tarde: "Almuerzo en picantería y descanso posterior", noche: "Paseo corto" },
+          { titulo: "Arequipa flexible", manana: "Visita pendiente o mañana libre", tarde: "Compras, café y descanso", noche: "Cena de cierre" }
+        ]}
+      ],
+      alertas: ["La llegada a altura requiere una jornada de adaptación antes de actividades exigentes.", "Machu Picchu necesita coordinación previa de entradas, circuito y transporte.", "Los traslados largos se separan de las jornadas de mayor actividad."]
+    }
+  ];
+
+  function obtenerPlanViaje(destino) {
+    const d = normalizarTexto(destino);
+    return planesViajeV1.find(p => p.claves.some(c => d.includes(normalizarTexto(c)))) || {
+      claves: [],
+      bases: [
+        { nombre: destino, min: 4, actividades: [
+          { titulo: "Primer contacto", manana: "Recorrido de orientación por el centro o barrio principal del destino", tarde: "Almuerzo y visita a uno de los atractivos más representativos de la zona", noche: "Cena cerca del alojamiento y paseo breve" },
+          { titulo: "Cultura y ciudad", manana: "Visita al principal atractivo cultural o histórico disponible", tarde: "Barrio local, mercado o museo según intereses seleccionados", noche: "Cena y actividad nocturna suave" },
+          { titulo: "Experiencia local", manana: "Actividad prioritaria alineada con los intereses elegidos", tarde: "Almuerzo y segunda actividad cercana para evitar traslados innecesarios", noche: "Cena libre" },
+          { titulo: "Día flexible", manana: "Mañana libre o visita pendiente", tarde: "Descanso, compras o paseo de baja intensidad", noche: "Preparación del siguiente tramo" }
+        ]},
+        { nombre: "Segunda base cercana", min: 4, actividades: [
+          { titulo: "Nueva base", manana: "Orientación por la nueva zona y sus servicios principales", tarde: "Actividad destacada cercana a la base", noche: "Cena local" },
+          { titulo: "Exploración", manana: "Atractivo principal de la segunda base", tarde: "Actividad complementaria en la misma zona", noche: "Tiempo libre" },
+          { titulo: "Naturaleza o cultura", manana: "Excursión de medio día según los intereses seleccionados", tarde: "Regreso y descanso", noche: "Cena" },
+          { titulo: "Recuperación", manana: "Mañana libre", tarde: "Paseo corto o actividad opcional", noche: "Preparación del traslado" }
+        ]}
+      ],
+      alertas: ["Este destino aún usa una estructura general de ZAREVOA; faltan datos locales específicos.", "Los tiempos de traslado deben verificarse antes de reservar.", "Las actividades finales deben ajustarse a clima, temporada, horarios y disponibilidad."]
+    };
+  }
+
+  function distribuirBases(plan, dias) {
+    const total = Math.max(1, dias || 4);
+    if (total <= 4) return [{...plan.bases[0], dias: total}];
+
+    let candidatas = [];
+    let acumulado = 0;
+    for (const base of plan.bases) {
+      if (acumulado >= total) break;
+      candidatas.push({...base, dias: Math.min(base.min, total - acumulado)});
+      acumulado += base.min;
+    }
+    if (!candidatas.length) candidatas = [{...plan.bases[0], dias: total}];
+
+    let asignados = candidatas.reduce((a,b)=>a+b.dias,0);
+    let idx = 0;
+    while (asignados < total) {
+      candidatas[idx % candidatas.length].dias++;
+      asignados++;
+      idx++;
+    }
+    return candidatas.filter(b => b.dias > 0);
+  }
+
+  function renderRuta(bases) {
+    const c = document.getElementById("rutaResultado");
+    c.innerHTML = "";
+    bases.forEach((b, i) => {
+      const parada = document.createElement("span");
+      parada.className = "ruta-parada";
+      parada.textContent = b.nombre + " · " + b.dias + (b.dias === 1 ? " día" : " días");
+      c.appendChild(parada);
+      if (i < bases.length - 1) {
+        const flecha = document.createElement("span");
+        flecha.className = "ruta-flecha";
+        flecha.textContent = "→";
+        c.appendChild(flecha);
+      }
+    });
+  }
+
+  function renderPresupuesto(dias, viajeros, presupuesto) {
+    const niveles = {
+      "Económico": { alojamiento: 35, comida: 22, transporte: 12, actividades: 15 },
+      "Medio": { alojamiento: 70, comida: 35, transporte: 22, actividades: 28 },
+      "Confort": { alojamiento: 120, comida: 55, transporte: 38, actividades: 45 },
+      "Premium": { alojamiento: 220, comida: 90, transporte: 70, actividades: 80 }
+    };
+    const nivel = niveles[presupuesto] || niveles["Medio"];
+    const d = dias || 4;
+    const v = Math.max(1, Number(viajeros) || 1);
+    const items = [
+      ["Alojamiento", nivel.alojamiento * d * v],
+      ["Comidas", nivel.comida * d * v],
+      ["Movilidad local", nivel.transporte * d * v],
+      ["Actividades", nivel.actividades * d * v]
+    ];
+    const total = items.reduce((a,x)=>a+x[1],0);
+    const c = document.getElementById("presupuestoResultado");
+    c.innerHTML = "";
+    items.concat([["Total terrestre estimado", total]]).forEach(([nombre, valor], i) => {
+      const item = document.createElement("div");
+      item.className = "presupuesto-item";
+      item.innerHTML = "<small>" + nombre + "</small><strong>USD " + Math.round(valor).toLocaleString("es-CL") + "</strong>" + (i === 4 ? "<small>Sin vuelos internacionales</small>" : "");
+      c.appendChild(item);
+    });
+  }
+
+  function renderAlertas(plan, bases, ritmo, movilidad) {
+    const c = document.getElementById("alertasResultado");
+    c.innerHTML = "";
+    const alertas = [...plan.alertas];
+    if (bases.length >= 4) alertas.push("La duración permite varias bases, pero ZAREVOA limita los cambios para evitar pasar demasiados días en tránsito.");
+    if (ritmo === "Relajado") alertas.push("El ritmo relajado mantiene mañanas más tardías y agrega jornadas de recuperación.");
+    if (ritmo === "Intenso") alertas.push("El ritmo intenso aumenta la carga diaria; se mantienen pausas cada pocos días para evitar fatiga acumulada.");
+    if (movilidad) alertas.push("Movilidad seleccionada: " + movilidad + ". Se priorizará esta opción cuando sea compatible con cada tramo.");
+    alertas.slice(0,5).forEach(texto => {
+      const d = document.createElement("div");
+      d.className = "alerta-viaje";
+      d.textContent = "⚠ " + texto;
+      c.appendChild(d);
+    });
+  }
+
+  function datosPracticosDia(baseNombre, titulo, tipoDia, movilidad) {
+    const base = normalizarTexto(baseNombre);
+    const t = normalizarTexto(titulo);
+    let traslado = movilidad || "A pie + transporte local según distancia";
+    let reserva = "No imprescindible; confirmar horarios el día anterior";
+    let consejo = "Agrupar visitas cercanas y dejar 30–45 min de margen entre bloques";
+
+    if (base.includes("roma")) traslado = "Metro + caminata; taxi solo para ahorrar tiempo en trayectos puntuales";
+    if (base.includes("florencia")) traslado = "Principalmente a pie; transporte local solo para puntos alejados";
+    if (base.includes("venecia")) traslado = "A pie + vaporetto; evitar planificar conexiones demasiado ajustadas";
+    if (base.includes("toscana")) traslado = "Auto, excursión organizada o bus/tren según la localidad elegida";
+    if (base.includes("bolonia")) traslado = "A pie en el centro + tren para excursiones regionales";
+    if (base.includes("ubud")) traslado = "Conductor privado, taxi/app local o scooter solo si el viajero tiene experiencia";
+    if (base.includes("munduk")) traslado = "Conductor privado recomendado por distancias y carreteras de montaña";
+    if (base.includes("nusa penida")) traslado = "Conductor local recomendado; carreteras lentas y tiempos variables";
+    if (base.includes("cusco")) traslado = "A pie en el centro + taxi autorizado/transporte organizado para sitios exteriores";
+    if (base.includes("valle sagrado")) traslado = "Transporte organizado, taxi o vehículo privado entre pueblos y sitios arqueológicos";
+    if (base.includes("machu picchu")) traslado = "Tren + bus oficial/recorrido peatonal según reserva y circuito";
+
+    if (/coliseo|vaticano|uffizi|borghese|museos vaticanos|san marcos|palacio ducal|machu picchu/.test(t)) {
+      reserva = "Reserva anticipada recomendada; elegir franja horaria antes de cerrar el resto del día";
+    }
+    if (/islas|murano|burano/.test(t)) reserva = "Revisar horario de vaporetto y tiempo total de navegación antes de salir";
+    if (/gastronom|vitivin|productor/.test(t)) reserva = "Conviene reservar experiencia o almuerzo con antelación";
+    if (/cascada|senderismo|arrozal|costa|playa|snorkel/.test(t)) consejo = "Revisar clima y condiciones locales; llevar agua y evitar encadenar otra actividad exigente";
+    if (tipoDia === "Traslado") consejo = "No fijar una entrada de horario estricto inmediatamente después del cambio de base";
+    if (tipoDia === "Llegada") consejo = "Mantener el día flexible por inmigración, equipaje, tráfico y posible jet lag";
+    if (tipoDia === "Regreso") consejo = "Confirmar check-out y tiempo al punto de salida la noche anterior";
+    if (tipoDia === "Descanso") consejo = "Este bloque es deliberadamente flexible y puede absorber una visita pendiente si el grupo tiene energía";
+
+    return { traslado, reserva, consejo };
+  }
+
+  function textoLlegadaBase(baseNombre) {
+    const b = normalizarTexto(baseNombre);
+    if (b.includes("roma")) return "instalarse y hacer un reconocimiento corto del barrio, identificando metro, farmacia, supermercado y un lugar cercano para cenar";
+    if (b.includes("florencia")) return "instalarse y caminar solo por el entorno inmediato, dejando el Duomo y los grandes atractivos para una franja reservada";
+    if (b.includes("venecia")) return "ubicar la parada de vaporetto más cercana y reconocer el camino al alojamiento sin añadir una visita principal";
+    if (b.includes("ubud")) return "instalarse, ubicar cajero/servicios próximos y hacer un paseo corto por el centro si queda energía";
+    if (b.includes("cusco")) return "instalarse, hidratarse y mantener actividad física baja durante las primeras horas por la altura";
+    return "instalarse, ubicar servicios esenciales y reconocer el entorno inmediato sin comprometer una visita principal";
+  }
+
+  function textoTrasladoBases(anterior, actual) {
+    const a = normalizarTexto(anterior), b = normalizarTexto(actual);
+    const clave = a + ">" + b;
+    const conocidos = {
+      "roma>florencia": "Tren de alta velocidad; reservar asiento y considerar traslado puerta a puerta entre alojamiento y estación",
+      "florencia>toscana": "Vehículo, bus o excursión privada según la base elegida; el tiempo real depende del pueblo o alojamiento",
+      "toscana>bolonia": "Regreso a un nodo ferroviario y continuación en tren, o vehículo directo según la base rural",
+      "bolonia>venecia": "Tren directo como opción práctica; sumar el traslado final desde Santa Lucia al alojamiento",
+      "ubud>munduk": "Traslado por carretera con conductor; convertir las paradas panorámicas en parte del trayecto, no en una carrera",
+      "munduk>nusa penida": "Carretera hacia el puerto + ferry; dejar margen amplio por tráfico y condiciones marítimas",
+      "lima>cusco": "Vuelo doméstico; mantener la tarde liviana para adaptación a la altura",
+      "cusco>valle sagrado": "Traslado terrestre; se puede incorporar una parada breve si no obliga a llegar tarde al alojamiento",
+      "valle sagrado>machu picchu": "Tren hacia Machu Picchu Pueblo con horario reservado; llegar a la estación con margen"
+    };
+    return conocidos[clave] || "Traslado entre bases con margen para check-out, transporte, llegada y check-in; evitar una reserva rígida inmediatamente después";
+  }
+
+
+  function analizarDiaZarevoa(base, titulo, tipoDia, ritmo, intereses, movilidad, diaGlobal) {
+    const t = normalizarTexto((base || '') + ' ' + (titulo || ''));
+    const ints = (intereses || []).map(normalizarTexto);
+    let score = 90;
+    if (tipoDia === 'Llegada' || tipoDia === 'Regreso') score = 96;
+    if (tipoDia === 'Traslado') score = 92;
+    if (tipoDia === 'Descanso') score = ritmo === 'Intenso' ? 89 : 97;
+    if (/cascada|sender|arrozal|playa|snorkel|montana/.test(t) && ints.includes('naturaleza')) score += 4;
+    if (/templo|museo|histor|cultura|palacio|iglesia|ruina/.test(t) && ints.includes('cultura')) score += 4;
+    if (/mercado|gastronom|cena|almuerzo|vino|picanter/.test(t) && ints.includes('gastronomia')) score += 3;
+    if (/centro|barrio|ciudad|plaza/.test(t) && ints.includes('ciudad')) score += 3;
+    score = Math.max(82, Math.min(98, score - ((diaGlobal * 3) % 4)));
+
+    const senales = [];
+    senales.push({txt:'Ritmo ' + (ritmo || 'Equilibrado').toLowerCase(), cls:'ok'});
+    senales.push({txt: tipoDia === 'Traslado' ? 'Cambio de base controlado' : 'Traslados agrupados', cls:'ok'});
+    senales.push({txt:'Carga del día coherente', cls:'ok'});
+    if (movilidad) senales.push({txt:'Movilidad considerada', cls:'ok'});
+
+    let detectado = 'La jornada mantiene margen para adaptar tiempos sin romper el resto del itinerario.';
+    if (/cascada|sender|arrozal|playa|snorkel/.test(t)) detectado = 'Actividad sensible a clima y condiciones locales: conviene confirmar el estado antes de salir y conservar margen de regreso.';
+    else if (/museo|vaticano|uffizi|accademia|machu|coliseo/.test(t)) detectado = 'Hay una visita con posible cupo u horario: la reserva debe fijarse antes de encajar actividades secundarias.';
+    else if (tipoDia === 'Traslado') detectado = 'El riesgo principal es el tiempo puerta a puerta; ZAREVOA evita colocar una reserva rígida justo después del traslado.';
+    else if (tipoDia === 'Llegada') detectado = 'La hora real de llegada puede variar por equipaje, inmigración o tráfico; el día queda deliberadamente flexible.';
+    else if (tipoDia === 'Descanso') detectado = 'El descanso funciona como colchón del viaje y puede absorber una actividad pendiente si el grupo mantiene energía.';
+
+    return {score, senales, detectado};
+  }
+
+  function decisionZarevoaEspecifica(base, titulo, tipoDia, interesesTexto, alojamiento) {
+    const t = normalizarTexto((base || '') + ' ' + (titulo || ''));
+    let d;
+    if (tipoDia === 'Llegada') d = 'Protegemos la primera jornada frente a retrasos y cansancio: primero instalación y orientación, después actividades de bajo compromiso.';
+    else if (tipoDia === 'Regreso') d = 'Priorizamos una salida sin estrés: el cálculo debe partir de la hora real de transporte y trabajar hacia atrás con margen de contingencia.';
+    else if (tipoDia === 'Traslado') d = 'El cambio de base se trata como parte del viaje, no como tiempo invisible; así evitamos encadenar transporte, check-in y una visita importante.';
+    else if (tipoDia === 'Descanso') d = 'Insertamos recuperación antes de que aparezca fatiga acumulada; esto mantiene sostenible el ritmo de los días siguientes.';
+    else if (/cascada/.test(t)) d = 'Agrupamos cascadas desde ' + base + ' en una sola jornada y evitamos cruzar Bali varias veces. La salida temprana reduce calor y deja margen ante tráfico o clima.';
+    else if (/arrozal|tegalalang/.test(t)) d = 'La mañana se reserva para los arrozales por temperatura y afluencia; la segunda visita queda en la misma dirección para reducir tiempo improductivo en carretera.';
+    else if (/templo|cultura|goa gajah|tirta|gunung/.test(t)) d = 'Las visitas culturales se encadenan por zona y con pausas reales, evitando convertir el día en una lista de templos sin tiempo para disfrutarlos.';
+    else if (/gastronom|mercado|vino|picanter/.test(t)) d = 'La comida principal se convierte en parte central de la experiencia y el resto del día se aligera para no competir con ella.';
+    else if (/museo|vaticano|uffizi|accademia|machu|coliseo/.test(t)) d = 'La actividad con horario o entrada limitada actúa como ancla del día; ZAREVOA organiza el resto alrededor de esa reserva, no al revés.';
+    else d = 'Combinamos actividades compatibles en la misma zona y conservamos una franja flexible, priorizando ' + interesesTexto + ' sin añadir desplazamientos que aporten poco valor.';
+    if (alojamiento) d += ' También se considera tu preferencia de alojamiento: ' + alojamiento + '.';
+    return d;
+  }
+
+  function mostrarOptimizacionDemo() {
+    const m = document.getElementById('optimizeMsg');
+    if (m) { m.style.display='block'; m.textContent='Journey podrá recalcular el viaje al cambiar ritmo, presupuesto, actividad o base sin empezar de cero.'; }
+  }
+
+  function crearItinerarioInicial(destino, dias, ritmo, intereses, movilidad, presupuesto, alojamiento, viajeros) {
+    const contenedor = document.getElementById("itinerarioResultado");
+    contenedor.innerHTML = "";
+
+    const totalDias = Math.max(1, dias || 4);
+    const planViaje = obtenerPlanViaje(destino);
+    const bases = distribuirBases(planViaje, totalDias);
+    renderRuta(bases);
+    renderPresupuesto(totalDias, viajeros, presupuesto);
+    renderAlertas(planViaje, bases, ritmo, movilidad);
+
+    const horarios = {
+      "Relajado": ["10:00", "15:30", "19:30"],
+      "Equilibrado": ["09:00", "14:30", "19:30"],
+      "Intenso": ["08:00", "13:30", "18:30"]
+    };
+    const horas = horarios[ritmo] || horarios["Equilibrado"];
+    const carga = ritmo === "Intenso" ? "Alta · 8–10 h activas" : ritmo === "Relajado" ? "Suave · 4–6 h activas" : "Media · 6–8 h activas";
+    const interesesTexto = intereses && intereses.length ? intereses.join(", ") : "cultura, gastronomía y lugares representativos";
+
+    let diaGlobal = 1;
+    bases.forEach((base, indiceBase) => {
+      for (let local = 1; local <= base.dias; local++, diaGlobal++) {
+        const esPrimerDiaViaje = diaGlobal === 1;
+        const esUltimoDiaViaje = diaGlobal === totalDias;
+        const esPrimerDiaBase = local === 1 && indiceBase > 0;
+        const descanso = !esPrimerDiaViaje && !esUltimoDiaViaje && !esPrimerDiaBase && (local % 5 === 0 || (ritmo === "Relajado" && local % 4 === 0));
+        const actividad = base.actividades[(local - 1) % base.actividades.length];
+
+        let manana, tarde, noche, tipoDia, tituloDia, decision;
+        if (esPrimerDiaViaje) {
+          tipoDia = "Llegada";
+          tituloDia = "Llegada y adaptación";
+          manana = "Llegada, control de ingreso y recogida de equipaje. Si el arribo es temprano, mantener esta franja sin reservas rígidas";
+          tarde = "Traslado a " + base.nombre + ", check-in y comida ligera; después, " + textoLlegadaBase(base.nombre);
+          noche = "Cena a poca distancia del alojamiento y descanso temprano para absorber posibles retrasos del viaje";
+          decision = "La primera jornada queda deliberadamente liviana: no se programa un atractivo principal que pueda perderse por demoras del vuelo o cansancio.";
+        } else if (esUltimoDiaViaje) {
+          tipoDia = "Regreso";
+          tituloDia = "Salida con margen";
+          manana = "Desayuno y check-out; confirmar documentos, equipaje y medio de transporte. Solo dejar un paseo cercano si existe margen real";
+          tarde = "Traslado al aeropuerto, estación o punto de salida. La hora exacta debe calcularse desde el horario real de salida, sumando trayecto, controles y un margen de contingencia";
+          noche = "Regreso o conexión de salida; no se programa actividad adicional";
+          decision = "El último día prioriza seguridad operativa del viaje y margen antes de la salida.";
+        } else if (esPrimerDiaBase) {
+          const anterior = bases[indiceBase - 1].nombre;
+          tipoDia = "Traslado";
+          tituloDia = anterior + " → " + base.nombre;
+          manana = "Desayuno, check-out y salida desde " + anterior + "; evitar compromisos con horario ajustado antes del traslado";
+          tarde = textoTrasladoBases(anterior, base.nombre) + ". Llegada, check-in y pausa real para instalarse";
+          noche = "Paseo suave por el entorno inmediato y cena cercana, sin cruzar la ciudad para una actividad secundaria";
+          decision = "El cambio de base ocupa una jornada propia para no convertir el traslado en un día de turismo apresurado.";
+        } else if (descanso) {
+          tipoDia = "Descanso";
+          tituloDia = "Recuperación programada";
+          manana = "Mañana libre sin alarma, desayuno tranquilo y descanso en el alojamiento";
+          tarde = "Bloque flexible cerca de " + base.nombre + ": descanso, café, paseo corto o una visita pendiente de baja exigencia según energía y clima";
+          noche = "Cena libre y preparación práctica del día siguiente";
+          decision = "Se reserva recuperación para que el itinerario sea sostenible y no acumule fatiga.";
+        } else {
+          tipoDia = "Exploración";
+          tituloDia = actividad.titulo || "Exploración de " + base.nombre;
+          manana = actividad.manana;
+          tarde = actividad.tarde;
+          noche = actividad.noche;
+          decision = "Este día concentra actividades cercanas entre sí y prioriza " + interesesTexto + ", evitando sumar traslados innecesarios.";
+        }
+
+        decision = decisionZarevoaEspecifica(base.nombre, tituloDia, tipoDia, interesesTexto, alojamiento);
+        const analisisZ = analizarDiaZarevoa(base.nombre, tituloDia, tipoDia, ritmo, intereses, movilidad, diaGlobal);
+        const senalesHtml = analisisZ.senales.map(s => "<span class='z-signal " + s.cls + "'>" + s.txt + "</span>").join("");
+
+        const dia = document.createElement("div");
+        dia.className = "dia";
+        dia.innerHTML =
+          "<div class='base-viaje'>Base " + base.nombre + "</div>" +
+          "<strong>Día " + diaGlobal + " · " + tituloDia + "</strong>" +
+          "<div class='dia-meta'><span>" + tipoDia + "</span><span>" + carga + "</span><span>Base: " + base.nombre + "</span>" +
+          (movilidad ? "<span>Movilidad: " + movilidad + "</span>" : "") + "</div>" +
+          "<div class='z-intelligence'><div class='z-intelligence-top'><div class='z-score'><strong>" + analisisZ.score + "%</strong><span>compatible contigo</span></div><span class='z-plan-chip'>ZAREVOA ENGINE</span></div><div class='z-signals'>" + senalesHtml + "</div><div class='z-detected'><b>ZAREVOA detectó:</b> " + analisisZ.detectado + "</div></div>" +
+          "<div class='tramo-dia'><b>" + horas[0] + " · Mañana</b><span>" + manana + ".</span></div>" +
+          "<div class='tramo-dia'><b>" + horas[1] + " · Tarde</b><span>" + tarde + ".</span></div>" +
+          "<div class='tramo-dia'><b>" + horas[2] + " · Noche</b><span>" + noche + ".</span></div>" +
+          (() => { const dp = datosPracticosDia(base.nombre, tituloDia, tipoDia, movilidad); return "<div class='detalle-practico'><div><b>Cómo moverse</b>" + dp.traslado + "</div><div><b>Reserva</b>" + dp.reserva + "</div><div><b>Margen ZAREVOA</b>" + dp.consejo + "</div></div>"; })() +
+          "<div class='consejo-dia'><b>Por qué ZAREVOA diseñó este día así:</b> " + decision + "</div>";
+        contenedor.appendChild(dia);
+      }
+    });
+  }
+
+
+  // ============================================================
+  // ZAREVOA ENGINE V1 · COMPATIBILIDAD REALISTA
+  // Cruza preferencias del viajero con perfiles locales de destino.
+  // Si el destino no está en la base V1, evita entregar un porcentaje
+  // artificialmente alto y marca el resultado como preliminar.
+  // ============================================================
+
+  function normalizarTexto(texto) {
+    return (texto || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
+
+
+  const perfilesDestinoV1 = [
+    {
+      claves: ["italia", "roma", "florencia", "venecia", "milan", "napoles", "sicilia"],
+      intereses: { "Naturaleza": 76, "Ciudad": 94, "Gastronomía": 98, "Cultura": 100 },
+      presupuesto: 3,
+      movilidad: ["Transporte público", "Mixto"],
+      ritmos: ["Equilibrado", "Relajado"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Luna de miel"],
+      mascota: 78,
+      mesesFavorables: [4,5,6,9,10],
+      mesesAceptables: [3,7,8,11]
+    },
+    {
+      claves: ["espana", "madrid", "barcelona", "granada", "sevilla", "valencia", "malaga"],
+      intereses: { "Naturaleza": 80, "Ciudad": 95, "Gastronomía": 96, "Cultura": 98 },
+      presupuesto: 2,
+      movilidad: ["Transporte público", "Mixto"],
+      ritmos: ["Equilibrado", "Relajado"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Negocios + ocio"],
+      mascota: 82,
+      mesesFavorables: [4,5,6,9,10],
+      mesesAceptables: [3,7,8,11]
+    },
+    {
+      claves: ["francia", "paris", "niza", "lyon", "provenza"],
+      intereses: { "Naturaleza": 78, "Ciudad": 96, "Gastronomía": 97, "Cultura": 99 },
+      presupuesto: 3,
+      movilidad: ["Transporte público", "Mixto"],
+      ritmos: ["Equilibrado", "Relajado"],
+      tipos: ["Pareja", "Familia", "Solo", "Luna de miel", "Negocios + ocio"],
+      mascota: 80,
+      mesesFavorables: [4,5,6,9,10],
+      mesesAceptables: [3,7,8,11,12]
+    },
+    {
+      claves: ["portugal", "lisboa", "oporto", "porto", "algarve", "madeira"],
+      intereses: { "Naturaleza": 88, "Ciudad": 88, "Gastronomía": 93, "Cultura": 92 },
+      presupuesto: 2,
+      movilidad: ["Transporte público", "Auto de alquiler", "Mixto"],
+      ritmos: ["Relajado", "Equilibrado"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Luna de miel"],
+      mascota: 83,
+      mesesFavorables: [4,5,6,9,10],
+      mesesAceptables: [3,7,8,11]
+    },
+    {
+      claves: ["grecia", "atenas", "santorini", "mykonos", "creta"],
+      intereses: { "Naturaleza": 90, "Ciudad": 82, "Gastronomía": 92, "Cultura": 96 },
+      presupuesto: 3,
+      movilidad: ["Mixto", "Auto de alquiler"],
+      ritmos: ["Relajado", "Equilibrado"],
+      tipos: ["Pareja", "Amigos", "Solo", "Luna de miel"],
+      mascota: 68,
+      mesesFavorables: [5,6,9,10],
+      mesesAceptables: [4,7,8]
+    },
+    {
+      claves: ["japon", "tokio", "tokyo", "kioto", "kyoto", "osaka"],
+      intereses: { "Naturaleza": 86, "Ciudad": 98, "Gastronomía": 96, "Cultura": 99 },
+      presupuesto: 3,
+      movilidad: ["Transporte público"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo"],
+      mascota: 45,
+      mesesFavorables: [3,4,5,10,11],
+      mesesAceptables: [2,6,9,12]
+    },
+    {
+      claves: ["tailandia", "bangkok", "phuket", "chiang mai", "krabi"],
+      intereses: { "Naturaleza": 94, "Ciudad": 87, "Gastronomía": 97, "Cultura": 93 },
+      presupuesto: 1,
+      movilidad: ["Mixto", "Traslados privados"],
+      ritmos: ["Relajado", "Equilibrado"],
+      tipos: ["Pareja", "Amigos", "Solo", "Aventura", "Luna de miel"],
+      mascota: 42,
+      mesesFavorables: [1,2,3,11,12],
+      mesesAceptables: [4,10]
+    },
+    {
+      claves: ["indonesia", "bali", "ubud", "denpasar"],
+      intereses: { "Naturaleza": 98, "Ciudad": 70, "Gastronomía": 88, "Cultura": 94 },
+      presupuesto: 2,
+      movilidad: ["Traslados privados", "Mixto"],
+      ritmos: ["Relajado", "Equilibrado"],
+      tipos: ["Pareja", "Amigos", "Solo", "Aventura", "Luna de miel"],
+      mascota: 35,
+      mesesFavorables: [5,6,7,8,9],
+      mesesAceptables: [4,10]
+    },
+    {
+      claves: ["mexico", "ciudad de mexico", "cancun", "riviera maya", "oaxaca", "tulum"],
+      intereses: { "Naturaleza": 92, "Ciudad": 90, "Gastronomía": 98, "Cultura": 97 },
+      presupuesto: 2,
+      movilidad: ["Mixto", "Traslados privados", "Auto de alquiler"],
+      ritmos: ["Relajado", "Equilibrado"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura", "Luna de miel"],
+      mascota: 65,
+      mesesFavorables: [1,2,3,4,11,12],
+      mesesAceptables: [5,10]
+    },
+    {
+      claves: ["peru", "lima", "cusco", "cuzco", "machu picchu", "arequipa"],
+      intereses: { "Naturaleza": 98, "Ciudad": 82, "Gastronomía": 97, "Cultura": 100 },
+      presupuesto: 2,
+      movilidad: ["Mixto", "Traslados privados"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura"],
+      mascota: 48,
+      mesesFavorables: [5,6,7,8,9],
+      mesesAceptables: [4,10]
+    },
+    {
+      claves: ["argentina", "buenos aires", "mendoza", "bariloche", "patagonia argentina"],
+      intereses: { "Naturaleza": 96, "Ciudad": 91, "Gastronomía": 95, "Cultura": 90 },
+      presupuesto: 2,
+      movilidad: ["Mixto", "Auto de alquiler", "Transporte público"],
+      ritmos: ["Equilibrado", "Relajado"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura"],
+      mascota: 76,
+      mesesFavorables: [3,4,5,9,10,11],
+      mesesAceptables: [1,2,6,7,8,12]
+    },
+    {
+      claves: ["chile", "santiago", "san pedro de atacama", "torres del paine", "patagonia chilena", "valparaiso"],
+      intereses: { "Naturaleza": 100, "Ciudad": 84, "Gastronomía": 86, "Cultura": 86 },
+      presupuesto: 2,
+      movilidad: ["Auto de alquiler", "Mixto", "Transporte público"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura"],
+      mascota: 72,
+      mesesFavorables: [1,2,3,10,11,12],
+      mesesAceptables: [4,5,9]
+    },
+    {
+      claves: ["brasil", "rio de janeiro", "sao paulo", "florianopolis", "salvador"],
+      intereses: { "Naturaleza": 94, "Ciudad": 91, "Gastronomía": 88, "Cultura": 91 },
+      presupuesto: 2,
+      movilidad: ["Mixto", "Traslados privados"],
+      ritmos: ["Relajado", "Equilibrado"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura"],
+      mascota: 67,
+      mesesFavorables: [3,4,5,8,9,10,11],
+      mesesAceptables: [1,2,6,7,12]
+    },
+    {
+      claves: ["estados unidos", "usa", "nueva york", "new york", "miami", "los angeles", "orlando", "san francisco"],
+      intereses: { "Naturaleza": 88, "Ciudad": 98, "Gastronomía": 91, "Cultura": 91 },
+      presupuesto: 4,
+      movilidad: ["Mixto", "Auto de alquiler", "Transporte público"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Negocios + ocio"],
+      mascota: 78,
+      mesesFavorables: [4,5,6,9,10],
+      mesesAceptables: [3,7,8,11,12]
+    },
+    {
+      claves: ["canada", "toronto", "vancouver", "montreal", "quebec", "edmonton", "calgary", "banff"],
+      intereses: { "Naturaleza": 100, "Ciudad": 90, "Gastronomía": 84, "Cultura": 86 },
+      presupuesto: 4,
+      movilidad: ["Auto de alquiler", "Mixto", "Transporte público"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura", "Negocios + ocio"],
+      mascota: 84,
+      mesesFavorables: [6,7,8,9],
+      mesesAceptables: [5,10,12,1,2,3]
+    },
+    {
+      claves: ["australia", "sydney", "melbourne", "brisbane", "perth", "gold coast"],
+      intereses: { "Naturaleza": 98, "Ciudad": 91, "Gastronomía": 87, "Cultura": 84 },
+      presupuesto: 4,
+      movilidad: ["Auto de alquiler", "Mixto"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura"],
+      mascota: 34,
+      mesesFavorables: [3,4,5,9,10,11],
+      mesesAceptables: [1,2,6,7,8,12]
+    },
+    {
+      claves: ["nueva zelanda", "new zealand", "auckland", "queenstown", "wellington"],
+      intereses: { "Naturaleza": 100, "Ciudad": 76, "Gastronomía": 82, "Cultura": 84 },
+      presupuesto: 4,
+      movilidad: ["Auto de alquiler", "Mixto"],
+      ritmos: ["Equilibrado", "Intenso"],
+      tipos: ["Pareja", "Familia", "Amigos", "Solo", "Aventura"],
+      mascota: 30,
+      mesesFavorables: [1,2,3,11,12],
+      mesesAceptables: [4,5,9,10]
+    }
+  ];
+
+
+  function buscarPerfilDestino(destino) {
+    const destinoNormalizado = normalizarTexto(destino);
+
+    return perfilesDestinoV1.find(perfil =>
+      perfil.claves.some(clave =>
+        destinoNormalizado.includes(normalizarTexto(clave))
+      )
+    ) || null;
+  }
+
+
+  function nivelPresupuesto(presupuesto) {
+    const niveles = {
+      "Económico": 1,
+      "Medio": 2,
+      "Confort": 3,
+      "Premium": 4
+    };
+
+    return niveles[presupuesto] || null;
+  }
+
+
+  function calcularCompatibilidadZarevoa(datos) {
+    const perfil = buscarPerfilDestino(datos.destino);
+    const razones = [];
+
+    // Un destino aún no cargado en la base V1 no recibe una
+    // compatibilidad falsa. El resultado queda deliberadamente limitado.
+    if (!perfil) {
+      let preliminar = 50;
+
+      if (datos.fechaInicio && datos.fechaFin) preliminar += 4;
+      if (datos.presupuesto) preliminar += 4;
+      if (datos.intereses.length > 0) preliminar += Math.min(6, datos.intereses.length * 2);
+      if (datos.tipo) preliminar += 3;
+      if (datos.alojamiento) preliminar += 2;
+      if (datos.movilidad) preliminar += 2;
+
+      preliminar = Math.min(71, preliminar);
+
+      return {
+        porcentaje: preliminar,
+        detalle: "Resultado preliminar: este destino aún no tiene un perfil específico en ZAREVOA Engine V1. El porcentaje refleja la calidad de la información ingresada, no una validación completa del destino."
+      };
+    }
+
+    let puntos = 54;
+
+    if (datos.intereses.length > 0) {
+      const afinidades = datos.intereses.map(interes => perfil.intereses[interes] || 60);
+      const promedio = afinidades.reduce((a, b) => a + b, 0) / afinidades.length;
+      puntos += (promedio / 100) * 22;
+
+      const mejores = datos.intereses.filter(interes => (perfil.intereses[interes] || 0) >= 90);
+      if (mejores.length > 0) {
+        razones.push("alta afinidad con " + mejores.join(", ").toLowerCase());
+      }
+    } else {
+      puntos += 10;
+      razones.push("perfil de intereses aún abierto");
+    }
+
+    const nivelUsuario = nivelPresupuesto(datos.presupuesto);
+    if (nivelUsuario) {
+      const diferencia = Math.abs(nivelUsuario - perfil.presupuesto);
+      if (diferencia === 0) {
+        puntos += 10;
+        razones.push("presupuesto bien alineado");
+      } else if (diferencia === 1) {
+        puntos += 6;
+        razones.push("presupuesto razonablemente compatible");
+      } else if (diferencia === 2) {
+        puntos += 1;
+        razones.push("el presupuesto podría requerir ajustes");
+      } else {
+        puntos -= 7;
+        razones.push("presupuesto con baja afinidad para este destino");
+      }
+    }
+
+    if (datos.movilidad) {
+      if (perfil.movilidad.includes(datos.movilidad)) {
+        puntos += 6;
+        razones.push("movilidad compatible");
+      } else {
+        puntos += 1;
+        razones.push("conviene revisar la movilidad elegida");
+      }
+    }
+
+    if (datos.ritmo) {
+      if (perfil.ritmos.includes(datos.ritmo)) {
+        puntos += 4;
+      } else {
+        puntos += 1;
+      }
+    }
+
+    if (datos.tipo) {
+      if (perfil.tipos.includes(datos.tipo)) {
+        puntos += 4;
+      } else {
+        puntos += 1;
+      }
+    }
+
+    if (datos.mascota === "Sí") {
+      if (perfil.mascota >= 70) {
+        puntos += 3;
+        razones.push("buena viabilidad para viajar con mascota");
+      } else if (perfil.mascota >= 50) {
+        puntos -= 1;
+        razones.push("viajar con mascota requiere planificación adicional");
+      } else {
+        puntos -= 6;
+        razones.push("viajar con mascota puede ser complejo");
+      }
+    }
+
+    if (datos.fechaInicio) {
+      const mes = new Date(datos.fechaInicio + "T00:00:00").getMonth() + 1;
+
+      if (perfil.mesesFavorables.includes(mes)) {
+        puntos += 5;
+        razones.push("temporada favorable");
+      } else if (perfil.mesesAceptables.includes(mes)) {
+        puntos += 2;
+        razones.push("temporada aceptable");
+      } else {
+        puntos -= 3;
+        razones.push("la temporada puede reducir la compatibilidad");
+      }
+    }
+
+    if (datos.flexibilidad === "Puedo mover algunos días") puntos += 1;
+    if (datos.flexibilidad === "Muy flexible") puntos += 2;
+
+    puntos = Math.round(Math.max(38, Math.min(97, puntos)));
+
+    let detalle = "Compatibilidad calculada cruzando el destino con tu perfil.";
+    if (razones.length > 0) {
+      detalle += " Factores principales: " + razones.slice(0, 4).join("; ") + ".";
+    }
+
+    return {
+      porcentaje: puntos,
+      detalle: detalle
+    };
+  }
+
+
+  function crearViaje() {
+
+    const origen =
+      obtenerValor("origen");
+
+    const destino =
+      obtenerValor("destino");
+
+    const fechaInicio =
+      obtenerValor("fechaInicio");
+
+    const fechaFin =
+      obtenerValor("fechaFin");
+
+    const viajeros =
+      obtenerValor("viajeros") || "1";
+
+    const edades =
+      obtenerValor("edades");
+
+    const presupuesto =
+      obtenerValor("presupuesto");
+
+    const ritmo =
+      obtenerValor("ritmo") ||
+      "Equilibrado";
+
+    const tipo =
+      obtenerValor("tipo");
+
+    const alojamiento =
+      obtenerValor("alojamiento");
+
+    const mascota =
+      obtenerValor("mascota");
+
+    const movilidad =
+      obtenerValor("movilidad");
+
+    const seguro =
+      obtenerValor("seguro");
+
+    const flexibilidad =
+      obtenerValor("flexibilidad");
+
+    const comentarios =
+      obtenerValor("comentarios");
+
+
+    const mensajeError =
+      document.getElementById(
+        "mensajeError"
+      );
+
+    mensajeError.style.display = "none";
+    mensajeError.textContent = "";
+
+
+    if (!destino) {
+
+      mensajeError.textContent =
+        "Escribe el destino que quieres visitar para poder crear tu viaje.";
+
+      mensajeError.style.display =
+        "block";
+
+      document.getElementById(
+        "destino"
+      ).focus();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+      return;
+    }
+
+
+    const duracion =
+      calcularDuracion(
+        fechaInicio,
+        fechaFin
+      );
+
+
+    if (duracion === -1) {
+
+      mensajeError.textContent =
+        "La fecha de regreso no puede ser anterior a la fecha de inicio.";
+
+      mensajeError.style.display =
+        "block";
+
+      return;
+    }
+
+
+    const interesesSeleccionados =
+      Array.from(
+        document.querySelectorAll(
+          'input[name="intereses"]:checked'
+        )
+      ).map(
+        elemento => elemento.value
+      );
+
+
+    document.getElementById(
+      "tituloResultado"
+    ).textContent =
+      "Tu viaje a " + destino;
+
+
+    let subtitulo =
+      "Una primera propuesta creada según tu perfil de viaje.";
+
+    if (origen) {
+      subtitulo =
+        "Desde " +
+        origen +
+        " hacia " +
+        destino +
+        ". Una primera propuesta creada según tu perfil de viaje.";
+    }
+
+    document.getElementById(
+      "subtituloResultado"
+    ).textContent =
+      subtitulo;
+
+
+    document.getElementById(
+      "viajerosResultado"
+    ).textContent =
+      viajeros +
+      (
+        Number(viajeros) === 1
+        ? " persona"
+        : " personas"
+      );
+
+
+    if (duracion) {
+
+      document.getElementById(
+        "duracionResultado"
+      ).textContent =
+        duracion +
+        (
+          duracion === 1
+          ? " día"
+          : " días"
+        );
+
+    } else {
+
+      document.getElementById(
+        "duracionResultado"
+      ).textContent =
+        "Fechas flexibles";
+
+    }
+
+
+    let estiloTexto = ritmo;
+
+    if (presupuesto) {
+      estiloTexto +=
+        " · " + presupuesto;
+    }
+
+    document.getElementById(
+      "estiloResultado"
+    ).textContent =
+      estiloTexto;
+
+
+    if (
+      interesesSeleccionados.length > 0
+    ) {
+
+      document.getElementById(
+        "interesesResultado"
+      ).textContent =
+        "Daremos prioridad a: " +
+        interesesSeleccionados.join(", ") +
+        ".";
+
+    } else {
+
+      document.getElementById(
+        "interesesResultado"
+      ).textContent =
+        "No seleccionaste intereses específicos, por lo que construiremos una propuesta equilibrada y variada.";
+
+    }
+
+
+    const badges = [];
+
+
+    if (tipo) {
+      badges.push(tipo);
+    }
+
+    if (ritmo) {
+      badges.push("Ritmo " + ritmo);
+    }
+
+    if (presupuesto) {
+      badges.push(
+        "Presupuesto " + presupuesto
+      );
+    }
+
+    if (alojamiento) {
+      badges.push(alojamiento);
+    }
+
+    if (movilidad) {
+      badges.push(movilidad);
+    }
+
+    if (mascota === "Sí") {
+      badges.push("Viaje con mascota");
+    }
+
+    if (seguro) {
+      badges.push(
+        "Seguro: " + seguro
+      );
+    }
+
+    if (flexibilidad) {
+      badges.push(flexibilidad);
+    }
+
+    if (edades) {
+      badges.push(
+        "Edades: " + edades
+      );
+    }
+
+    if (comentarios) {
+      badges.push(
+        "Preferencias especiales"
+      );
+    }
+
+
+    const badgesResultado =
+      document.getElementById(
+        "badgesResultado"
+      );
+
+    badgesResultado.innerHTML = "";
+
+
+    if (badges.length === 0) {
+
+      const badge =
+        document.createElement("span");
+
+      badge.className = "badge";
+
+      badge.textContent =
+        "Perfil personalizado";
+
+      badgesResultado.appendChild(
+        badge
+      );
+
+    } else {
+
+      badges.forEach(
+        texto => {
+
+          const badge =
+            document.createElement(
+              "span"
+            );
+
+          badge.className =
+            "badge";
+
+          badge.textContent =
+            texto;
+
+          badgesResultado.appendChild(
+            badge
+          );
+
+        }
+      );
+
+    }
+
+
+    const resultadoCompatibilidad =
+      calcularCompatibilidadZarevoa({
+        destino: destino,
+        fechaInicio: fechaInicio,
+        fechaFin: fechaFin,
+        presupuesto: presupuesto,
+        ritmo: ritmo,
+        tipo: tipo,
+        alojamiento: alojamiento,
+        mascota: mascota,
+        movilidad: movilidad,
+        flexibilidad: flexibilidad,
+        intereses: interesesSeleccionados
+      });
+
+
+    document.getElementById(
+      "compatibilidadResultado"
+    ).textContent =
+      resultadoCompatibilidad.porcentaje + "%";
+
+
+    document.getElementById(
+      "compatibilidadDetalle"
+    ).textContent =
+      resultadoCompatibilidad.detalle;
+
+
+    crearItinerarioInicial(
+      destino,
+      duracion,
+      ritmo,
+      interesesSeleccionados,
+      movilidad,
+      presupuesto,
+      alojamiento,
+      viajeros
+    );
+
+
+    document.getElementById(
+      "formulario"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "resultado"
+    ).style.display =
+      "block";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  function volverFormulario() {
+
+    document.getElementById(
+      "resultado"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "formulario"
+    ).style.display =
+      "block";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+</script>
+
+</body>
+</html>
