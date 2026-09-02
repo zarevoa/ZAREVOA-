@@ -2498,6 +2498,11 @@
   }
 
 </script>
-
+<script>
+function iniciarGooglePlaces(){
+  const destino=document.getElementById("destino");
+  if(destino)new google.maps.places.Autocomplete(destino);
+}
+</script><script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&libraries=places&callback=iniciarGooglePlaces" async defer></script>
 </body>
 </html>
