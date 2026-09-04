@@ -1,0 +1,63 @@
+name: Deploy ZAREVOA to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare site
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: |
+          mkdir -p _site
+          rsync -av --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
+          cp _site/index-2.html _site/index.html
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          p = Path("_site/index.html")
+          text = p.read_text(encoding="utf-8")
+          key = os.environ["GOOGLE_MAPS_API_KEY"]
+
+          if "TU_API_KEY" not in text:
+              raise SystemExit("No se encontró TU_API_KEY")
+
+          p.write_text(
+              text.replace("TU_API_KEY", key),
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
