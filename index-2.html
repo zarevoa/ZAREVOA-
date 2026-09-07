@@ -2511,33 +2511,6 @@
   }
 
 </script>
-<script>
-async function iniciarGooglePlaces() {
-  const destino = document.getElementById("destino");
-  if (!destino) return;
 
-  const { PlaceAutocompleteElement } =
-    await google.maps.importLibrary("places");
-
-  const autocomplete = new PlaceAutocompleteElement();
-  autocomplete.placeholder = destino.placeholder || "Buscar destino";
-
-  destino.parentNode.insertBefore(autocomplete, destino);
-  destino.style.display = "none";
-
-  autocomplete.addEventListener("gmp-select", async (event) => {
-    const place = event.placePrediction.toPlace();
-
-    await place.fetchFields({
-      fields: ["displayName", "formattedAddress", "location"]
-    });
-
-    destino.value =
-      place.formattedAddress ||
-      place.displayName ||
-      "";
-  });
-}
-</script><script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&libraries=places&callback=iniciarGooglePlaces" async defer></script>
 </body>
 </html>
