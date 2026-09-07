@@ -2194,6 +2194,19 @@
 
       return;
     }
+    if (destino.length < 3) {
+  mensajeError.textContent =
+    "Escribe un destino más completo.";
+
+  mensajeError.style.display =
+    "block";
+
+  document.getElementById(
+    "destino"
+  ).focus();
+
+  return;
+    }
 
 
     const duracion =
