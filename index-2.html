@@ -1542,7 +1542,19 @@
   function renderAlertas(plan, bases, ritmo, movilidad) {
     const c = document.getElementById("alertasResultado");
     c.innerHTML = "";
-    const alertas = [...plan.alertas];
+    const basePrincipal = bases.length === 1
+  ? normalizarTexto(bases[0].nombre)
+  : "";
+
+let alertas = [...plan.alertas];
+
+if (basePrincipal.includes("venecia")) {
+  alertas = [
+    "Conviene reservar con anticipación la Basílica de San Marcos y el Palacio Ducal cuando corresponda.",
+    "Revisar horarios de vaporetto antes de desplazarse a Murano o Burano.",
+    "En Venecia conviene priorizar alojamiento bien conectado a pie y por vaporetto."
+  ];
+}
     if (bases.length >= 4) alertas.push("La duración permite varias bases, pero ZAREVOA limita los cambios para evitar pasar demasiados días en tránsito.");
     if (ritmo === "Relajado") alertas.push("El ritmo relajado mantiene mañanas más tardías y agrega jornadas de recuperación.");
     if (ritmo === "Intenso") alertas.push("El ritmo intenso aumenta la carga diaria; se mantienen pausas cada pocos días para evitar fatiga acumulada.");
