@@ -1672,8 +1672,27 @@
     contenedor.innerHTML = "";
 
     const totalDias = Math.max(1, dias || 4);
-    const planViaje = obtenerPlanViaje(destino);
-    const bases = distribuirBases(planViaje, totalDias);
+const planViaje = obtenerPlanViaje(destino);
+
+const comentarioNormalizado = normalizarTexto(comentarios);
+
+const baseSolicitada = planViaje.bases.find(base =>
+  comentarioNormalizado.includes(normalizarTexto(base.nombre))
+);
+
+let planAjustado = planViaje;
+
+if (baseSolicitada) {
+  planAjustado = {
+    ...planViaje,
+    bases: [
+      baseSolicitada,
+      ...planViaje.bases.filter(base => base !== baseSolicitada)
+    ]
+  };
+}
+
+const bases = distribuirBases(planAjustado, totalDias);
     renderRuta(bases);
     renderPresupuesto(totalDias, viajeros, presupuesto);
     renderAlertas(planViaje, bases, ritmo, movilidad);
